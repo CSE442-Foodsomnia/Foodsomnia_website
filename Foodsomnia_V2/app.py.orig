@@ -1,0 +1,12 @@
+from web_app import init_app
+import sys
+
+if __name__ == "__main__":
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
+
+    app = init_app()
+<<<<<<< HEAD
+    app.run(debug=True, host='0.0.0.0', port=port)
+=======
+    app.run(debug=True, host="0.0.0.0")
+>>>>>>> 1b39522de70137bfb93e8c50925c5342933cb334
