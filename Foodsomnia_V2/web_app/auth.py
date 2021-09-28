@@ -41,7 +41,7 @@ def login():
 def register():
 
     form = RegistrationForm()
-    
+
     if form.validate_on_submit():
         print("register form validated!", file=sys.stdout)
 
@@ -70,4 +70,5 @@ def register():
 @auth.route("/logout")
 def logout():
     logout_user()
+    flash("User logged out!")
     return redirect(url_for("views.home"))
