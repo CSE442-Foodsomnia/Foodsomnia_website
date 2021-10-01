@@ -1,5 +1,5 @@
 build:
   docker:
-    web: Foodsomnia_V2/Dockerfile
+    web: Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
