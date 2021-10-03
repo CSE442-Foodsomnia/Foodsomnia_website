@@ -1,3 +1,20 @@
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+        <script type="text/javascript">
+        function dosomething(){
+        $.ajax({
+            url: '/nextImage',
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                document.getElementById("displayImage").src = data.value
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+        }
+         </script>
+
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
@@ -6,5 +23,6 @@
 {% if name %}
 <h1>Hello, {{name}}!</h1>
 {% endif %}
-
+<img id="displayImage" src={{imagejpg}} alt="image alt text" />
+<button onclick="dosomething()") class='btn btn-default'>"Swipe Right"</button>
 {% endblock %}
