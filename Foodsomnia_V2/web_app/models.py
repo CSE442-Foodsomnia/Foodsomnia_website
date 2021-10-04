@@ -4,6 +4,7 @@ from sqlalchemy.sql import func
 
 
 class User(db.Model, UserMixin):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     username = db.Column(db.String(150), unique=True)
@@ -33,6 +34,67 @@ class User(db.Model, UserMixin):
 
 
 class Recipe(db.Model):
+    __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
+    spoonacular_id = db.Column(db.Integer, unique=True)
     title = db.Column(db.String(), unique=True)
     image = db.Column(db.String(), unique=True)
+    dairyFree = db.Column(db.Boolean(), default=False)
+    glutenFree = db.Column(db.Boolean(), default=False)
+    vegetarian = db.Column(db.Boolean(), default=False)
+    ingredients = db.Column(db.String(), unique=False)
+    summary = db.Column(db.String(), unique=True)
+    author = db.Column(db.String(), unique=False)
+
+
+    def __init__(self, spoonacular_id, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, author=""):
+        self.spoonacular_id = spoonacular_id
+        self.title = title
+        self.image = image
+        self.dairyFree = dairyFree
+        self.glutenFree = glutenFree
+        self.vegetarian = vegetarian
+        self.ingredients = ingredients
+        self.summary = summary
+        self.author = author
+
+
+    def __str__(self):
+        return f"""spoonacular_id: {self.spoonacular_id},
+                    title: {self.title},
+                    image: {self.image},
+                    dairyFree: {self.dairyFree},
+                    glutenFree: {self.glutenFree},
+                    vegetarian: {self.vegetarian},
+                    ingredients: {self.ingredients},
+                    summary: {self.summary},
+                    author: {self.author}"""
+
+
+class Ingredient():
+     def __init__(self, name, amount, unit):
+         self.name = name
+         self.amount = amount
+         self.unit = unit
+
+
+class Liked(db.Model):
+    __tablename__ = 'liked'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+
+    def __init__(self, user_id, recipe_id):
+        self.user_id = user_id
+        self.recipe_id = recipe_id
+
+
+class Disliked(db.Model):
+    __tablename__ = 'disliked'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+
+    def __init__(self, user_id, recipe_id):
+        self.user_id = user_id
+        self.recipe_id = recipe_id
