@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Swipe{% endblock %}
+
+
+{% block content%}
+
+<div class="card" style="width: 18rem;">
+  <img src="{{recipe.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{recipe.title}}</h5>
+    <p class="card-text">{{recipe.summary}}</p>
+    <p>{{recipe.summary}}</p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
+
+
+
+{% endblock %}
