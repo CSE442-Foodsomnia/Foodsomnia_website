@@ -2,3 +2,7 @@ flask
 flask_sqlalchemy
 flask_login
 flask_wtf
+flask_migrate
+psycopg2
+flask_apscheduler
+request
