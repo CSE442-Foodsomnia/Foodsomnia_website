@@ -5,4 +5,4 @@ flask_wtf
 flask_migrate
 psycopg2
 flask_apscheduler
-request
+requests
