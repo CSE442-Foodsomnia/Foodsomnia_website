@@ -3,7 +3,7 @@
 
 {% block content%}
 
-<form action="" method="post">
+<form class="login-form" action="" method="post">
   <p>
     {{form.csrf_token}} <br>
     {{form.email.label}} {{form.email()}} <br>
