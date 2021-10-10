@@ -6,8 +6,7 @@ import sys
 import re
 
 
-
-RECIPE_COUNT = 1
+RECIPE_COUNT = 100
 
 
 JOKE = 0
