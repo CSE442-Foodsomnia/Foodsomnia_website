@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block meta %}
+{% endblock %}
+{% block title %}Swipe{% endblock %}
+
+
+{% block content%}
+
+<div class="card" style="width: 18rem;">
+  <img src="{{recipe.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{recipe.title}}</h5>
+    <p class="card-text">{{recipe.summary}}</p>
+    <p>{{recipe.summary}}</p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+    window.addEventListener('keydown', (event) => {
+        switch (event.keyCode) {
+          case 37:
+            // left arrow
+            console.log("left arrow");
+            $.ajax({
+              type: "POST",
+              url: "{{url_for('food.food_recommendation')}}",
+              data: `{"key_pressed":"left"}`,
+              contentType: 'application/json;charset=UTF-8'
+            });
+            window.location.reload();
+            break;
+
+          case 39:
+            // right arrow
+            console.log("right arrow");
+            $.ajax({
+              type: "POST",
+              url: "{{url_for('food.food_recommendation')}}",
+              data: `{"key_pressed":"right"}`,
+              contentType: 'application/json;charset=UTF-8'
+            });
+            window.location.reload();
+            break;
+        }
+    });
+</script>
+
+
+
+
+
+{% endblock %}
