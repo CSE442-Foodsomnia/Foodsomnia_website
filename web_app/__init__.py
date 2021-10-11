@@ -4,6 +4,7 @@ import os
 from flask_login import LoginManager
 
 
+
 db = SQLAlchemy()
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -24,7 +25,7 @@ def init_app():
 
     from .models import User
 
-    create_database(app)
+#    create_database(app)
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"
