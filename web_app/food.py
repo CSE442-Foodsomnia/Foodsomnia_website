@@ -59,7 +59,7 @@ def liked():
 
 
 
-    return render_template('liked.html')
+    return render_template('liked.html', liked=all_liked)
 
 
 @food.route("/disliked")
@@ -68,4 +68,4 @@ def disliked():
 
 
 
-    return render_template('disliked.html')
+    return render_template('disliked.html', disliked=all_disliked)
