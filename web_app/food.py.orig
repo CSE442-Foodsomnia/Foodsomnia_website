@@ -46,26 +46,3 @@ def food_recommendation():
             print("wrong key pressed")
 
     return render_template('swipe.html', recipe=random_recipe)
-
-
-@food.route("/trending")
-def trending():
-    return render_template('home.html')
-
-
-@food.route("/liked")
-def liked():
-    all_liked = Liked.query.filter(user_id=current_user.id)
-
-
-
-    return render_template('liked.html')
-
-
-@food.route("/disliked")
-def disliked():
-    all_disliked = Disliked.query.filter(user_id=current_user.id)
-
-
-
-    return render_template('disliked.html')

@@ -10,6 +10,12 @@ import sys
 auth = Blueprint("auth", __name__)
 
 
+def flash_form_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(f"ERROR --> {field}: {error}", 'fail')
+
+
 @auth.route("/login", methods=['GET', 'POST'])
 def login():
     print("login!", file=sys.stdout)
@@ -26,11 +32,13 @@ def login():
                 login_user(user, remember=True)
                 db.session.add(user)
                 db.session.commit()
-                flash("Log in successfully")
+                flash("Log in successfully", 'success')
                 return redirect(url_for("views.home"))
-
         else:
-            flash("Invalid username or password")
+            flash("No user found by that email address", 'fail')
+
+
+    flash_form_errors(form)
 
 
     return render_template("login.html", form=form)
@@ -60,9 +68,11 @@ def register():
         print(new_user)
         db.session.add(new_user)
         db.session.commit()
-        flash("User created successfully!")
+        flash("User created successfully!", 'success')
         print("User created successfully!", file=sys.stderr)
         return redirect(url_for('auth.login'))
+
+    flash_form_errors(form)
 
     return render_template("register.html", form=form)
 
@@ -70,5 +80,5 @@ def register():
 @auth.route("/logout")
 def logout():
     logout_user()
-    flash("User logged out!")
+    flash("User logged out!", 'success')
     return redirect(url_for("views.home"))
