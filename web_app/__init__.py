@@ -49,7 +49,7 @@ def init_app():
     scheduler = APScheduler()
     scheduler.init_app(app)
     app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=30, id="DB1")
-    scheduler.start()
+    # scheduler.start()
 
     return app
 

@@ -6,37 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title> {% block title %}{% endblock %} </title>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <nav class="nav">
-      <a class="nav-link" href="{{ url_for('views.home') }}">Home</a>
-      <a class="nav-link" href="">Trending</a>
-      <a class="nav-link" href="">Liked</a>
-      <a class="nav-link" href="">Disliked</a>
-      <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
-      <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
-      <a class="nav-link" href="">Logout</a>
-    </nav>
-
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
-          {% for message in messages %}
+          {% for category, message in messages %}
+              {% if category == 'fail' %}
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
 
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{message}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          
+              {% elif category == 'success' %}
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+              {% endif %}
+
+
+
+
           {% endfor %}
       {% endif %}
     {% endwith %}
+
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        $('.alert').alert()
+      })
+    </script> -->
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <ul class="nav nav-pills" style="float:right">
+
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="pill" href=" {{ url_for('views.home') }} ">Home</a>
+      </li>
+
+    {% if current_user.is_authenticated %}
+
+    <!-- User is logged in -->
+
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href=" {{ url_for('food.trending') }} ">Trending</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href=" {{ url_for('food.food_recommendation') }} ">Swipe</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href=" {{ url_for('food.liked') }} ">Liked</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href=" {{ url_for('food.disliked') }} ">Disliked</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href=" {{ url_for('auth.logout') }} ">Logout</a>
+    </li>
+
+    {% else %}
+
+      <!-- User is not logged in -->
+
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="pill" href=" {{ url_for('auth.login') }} ">Login</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="pill" href=" {{ url_for('auth.register') }} ">Register</a>
+      </li>
+
+
+
+
+
+    {% endif %}
+  </ul>
+
+
+
+
 
     {% block content %}
 
