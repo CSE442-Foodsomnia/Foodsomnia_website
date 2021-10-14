@@ -6,26 +6,58 @@ Register
 
 {% block content%}
 
-<form action="" method="post">
+<form class="reg-form" action="" method="post">
   <p>
     {{form.csrf_token}}
     {{form.username.label}} {{form.username()}} <br>
     {{form.email.label}} {{form.email()}} <br>
     {{form.password.label}} {{form.password()}} <br>
     {{form.confirm.label}} {{form.confirm()}} <br>
+  </p>
+    <div class="multiselect">
+      <div class="selectBox" onclick="showCheckedBoxes()">
+          <select>
+            <option>Select Allergens</option>
+          </select>
+          <div class="overSelect"></div>
+      </div>
+      <div id="checkboxes">
+        <label for="milk_allerg"><input type="checkbox" id="milk_allerg"/> Milk Allergy</label>
+        <label for="peanut_allerg"><input type="checkbox" id="peanut_allerg"/> Peanut Allergy</label>
+        <label for="soybeans_allerg"><input type="checkbox" id="soybeans_allerg"/> Soybean Allergy</label>
+        <label for="wheat_allerg"><input type="checkbox" id="wheat_allerg"/> Wheat Allergy</label>
+        <label for="egg_allerg"><input type="checkbox" id="egg_allerg"/> Egg Allergy</label>
+        <label for="fish_allerg"><input type="checkbox" id="fish_allerg"/> Fish Allergy</label>
+        <label for="shellfish_alleg"><input type="checkbox" id="seven"/> Shellfish Allergy</label>
+      </div>
+    </div>
 
-    {{form.milk_allerg.label}} {{form.milk_allerg()}} <br>
+    <!-- {{form.milk_allerg.label}} {{form.milk_allerg()}} <br>
     {{form.peanut_allerg.label}} {{form.peanut_allerg()}} <br>
     {{form.soybeans_allerg.label}} {{form.soybeans_allerg()}} <br>
     {{form.wheat_allerg.label}} {{form.wheat_allerg()}} <br>
     {{form.egg_allerg.label}} {{form.egg_allerg()}} <br>
     {{form.fish_allerg.label}} {{form.fish_allerg()}} <br>
-    {{form.shellfish_alleg.label}} {{form.shellfish_alleg()}} <br>
-
+    {{form.shellfish_alleg.label}} {{form.shellfish_alleg()}} <br> -->
+  <p>
     {{form.accept_tos.label}} {{form.accept_tos()}} <br>
     {{form.submit()}} <br>
   </p>
 </form>
+<script>
+  var expanded = false;
+  function showCheckedBoxes(){
+    var checkboxes = document.getElementById("checkboxes");
+    if(!expanded){
+      checkboxes.style.display = "block";
+      expanded = true;
+    }
+    else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+</script>
 
 
 
