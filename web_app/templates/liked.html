@@ -4,7 +4,22 @@
 
 {% block content%}
 
-<!-- Code in here -->
+<div class ="container-fluid mt-15" >
+	{% for recipe in liked %}
+		<div class = "card mt-3" id = "liked_cards">
+			<div class="row">
+				<div class ="col-md-4">
+					<img src= {{recipe.image}} class="image-fluid" width="400" height="250">
+				</div>
+				<div class = "col-md-8">
+					<h2 card = "card-title mt-3"> {{recipe.title}} </h2>
+					<p>{{recipe.summary}}</p>
+					<button class = "btn btn-success"> Read More!  </button>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
 
 
 {% endblock %}

@@ -149,7 +149,8 @@
     padding-bottom:25px;
   }
   
-  a.nav-link{
+
+a.nav-link.active{
     position: relative;
     padding: 0 10px;
     text-decoration: none;
@@ -157,8 +158,14 @@
     letter-spacing: 0.5px;
     text-shadow: 1px 1px 5px rgba(0,0,0, .1);
     }
+
+
+  . li{
+   display:inline;
+
+ }
   
-  a.nav-link:after{
+  a.nav-link.active:after{
   content: '';
   position: absolute;
   background-color: #FFF1E6;
@@ -169,8 +176,11 @@
   transition: 0.5s;
   }
   
+  ul.nav-pills{
+    color: white;
+  }
   /*add hover effect for navigation*/
-  a.nav-link:hover:after{
+  a.nav-link.active:hover:after{
     width: 100%;
     text-decoration: none;
   }
@@ -183,11 +193,10 @@
 
  /*CARDS SECTION*/
 
-.card {
+#liked_cards {
    
    position: relative;
-  
-   max-width: 35ch;
+
    margin: 20px auto;
    box-shadow: 0px 0px 30px 2px #000;
    border-radius: .5rem;
@@ -197,7 +206,7 @@
    min-height: 100px;
 }
 
-.card:hover {
+#liked_cards:hover {
   transform:  scale(1.05);
 }
 
