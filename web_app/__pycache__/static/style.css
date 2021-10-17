@@ -149,7 +149,7 @@
     padding-bottom:25px;
   }
   
-  a.nav-link{
+  .nav-link.active{
     position: relative;
     padding: 0 10px;
     text-decoration: none;
@@ -158,7 +158,20 @@
     text-shadow: 1px 1px 5px rgba(0,0,0, .1);
     }
   
-  a.nav-link:after{
+   ul.nav-pills{
+    color: white;
+  }
+  
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    position: relative;
+    padding: 0 10px;
+    text-decoration: none;
+    color: #435058;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 5px rgba(0,0,0, .1);
+}
+
+  .nav-link.active:after{
   content: '';
   position: absolute;
   background-color: #FFF1E6;
@@ -170,12 +183,12 @@
   }
   
   /*add hover effect for navigation*/
-  a.nav-link:hover:after{
+  .nav-link.active:hover:after{
     width: 100%;
     text-decoration: none;
   }
   
-  a.nav-link:hover{
+  .nav-link.active:hover{
     color: #6C757D;
   }
   /*navigation*/

@@ -55,8 +55,8 @@ def trending():
 
 @food.route("/liked")
 def liked():
-    all_liked = pd.Series(Liked.query.filter_by(user_id=current_user.id))
-    recipe_list = [value.recipe_id for index, value in all_liked.items()]
+    all_liked = pd.Series(Liked.query.filter_by( user_id = current_user.id))
+    recipe_list = [ value.recipe_id for index,value in all_liked.items() ]
     recipe_query = Recipe.query.filter(Recipe.id.in_(recipe_list))
 
     return render_template('liked.html', liked=recipe_query)
