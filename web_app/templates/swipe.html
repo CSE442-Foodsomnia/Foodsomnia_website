@@ -71,7 +71,7 @@ console.log({{displayedid}})
             $.ajax({
               type: "POST",
               url: "{{url_for('food.food_recommendation')}}",
-              data: `{"key_pressed":"right"}`,
+              data: `{"key_pressed":"right", "displayedrecipe":{{displayedid}} }`,
               contentType: 'application/json;charset=UTF-8'
             });
             window.location.reload();
