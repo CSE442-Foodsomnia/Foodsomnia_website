@@ -6,4 +6,7 @@ flask_migrate
 psycopg2
 flask_apscheduler
 requests
-gunicorn
+sklearn
+pandas
+copy
+random
