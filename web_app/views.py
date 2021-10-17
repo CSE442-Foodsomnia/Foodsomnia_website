@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, flash
 from flask_login import login_required, current_user
 import sys
+import requests
+from json import dumps
 
 from . import db
 from .models import User
@@ -9,9 +11,9 @@ from .models import User
 views = Blueprint("views", __name__)
 
 @views.route("/")
+#@login_required
 def home():
     print("home!", file=sys.stdout)
-    print(current_user)
     return render_template("home.html")
 
 
