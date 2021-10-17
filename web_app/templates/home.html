@@ -1,11 +1,18 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 
-{% block content%}
 
-{% if name %}
-<h1>Hello, {{name}}!</h1>
+{% block content%}
+<h1>Foodsomnia</h1>
+<h3>Cooking one swipe at a time!</h3>
+<br>
+<br>
+{% if current_user.is_authenticated %}
+  <h4>Hello, {{current_user.username.capitalize()}}!</h4>
 {% endif %}
+
 
 <div class="welcome-text">
     <h2>Cook to your heart's</h2>
