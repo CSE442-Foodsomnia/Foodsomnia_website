@@ -149,7 +149,8 @@
     padding-bottom:25px;
   }
   
-  .nav-link.active{
+
+a.nav-link.active{
     position: relative;
     padding: 0 10px;
     text-decoration: none;
@@ -157,21 +158,14 @@
     letter-spacing: 0.5px;
     text-shadow: 1px 1px 5px rgba(0,0,0, .1);
     }
-  
-   ul.nav-pills{
-    color: white;
-  }
-  
-  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    position: relative;
-    padding: 0 10px;
-    text-decoration: none;
-    color: #435058;
-    letter-spacing: 0.5px;
-    text-shadow: 1px 1px 5px rgba(0,0,0, .1);
-}
 
-  .nav-link.active:after{
+
+  . li{
+   display:inline;
+
+ }
+  
+  a.nav-link.active:after{
   content: '';
   position: absolute;
   background-color: #FFF1E6;
@@ -182,15 +176,69 @@
   transition: 0.5s;
   }
   
+  ul.nav-pills{
+    color: white;
+  }
   /*add hover effect for navigation*/
-  .nav-link.active:hover:after{
+  a.nav-link.active:hover:after{
     width: 100%;
     text-decoration: none;
   }
   
-  .nav-link.active:hover{
+  a.nav-link:hover{
     color: #6C757D;
   }
   /*navigation*/
   /*log-in form change end*/
 
+ /*CARDS SECTION*/
+
+#liked_cards {
+   
+   position: relative;
+
+   margin: 20px auto;
+   box-shadow: 0px 0px 30px 2px #000;
+   border-radius: .5rem;
+   overflow: hidden;
+   transition: transform 500ms ease;
+   height: auto;
+   min-height: 100px;
+}
+
+#liked_cards:hover {
+  transform:  scale(1.05);
+}
+
+.card-text {
+  
+  color: black;
+  transition: opacity 1s ease-out;
+  opacity: 0;
+}
+
+.card:hover .card-text: :after{
+  display: block;
+
+  transition: visibility 0s, opacity 0.5s linear;
+}
+.card-title{
+  position: relative;
+}
+
+.card-title::after {
+  content:  "";
+  position: absolute;
+  height:  4px;
+  width:  100%;
+  background:  var(--clr-accent-400);
+  left:  0;
+  bottom:  0;
+
+}
+.card:hover .card-title::after{
+  transform:  scaleX(1);
+}
+
+
+ 

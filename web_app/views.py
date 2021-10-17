@@ -9,10 +9,10 @@ from .models import User
 views = Blueprint("views", __name__)
 
 @views.route("/")
-@login_required
 def home():
     print("home!", file=sys.stdout)
-    return render_template("home.html", name=current_user.username)
+    print(current_user)
+    return render_template("home.html")
 
 
 @views.route("/database")
