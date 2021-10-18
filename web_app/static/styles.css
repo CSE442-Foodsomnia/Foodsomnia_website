@@ -1,0 +1,460 @@
+/*fonts*/
+@font-face {
+  font-family: 'FPLNeuRegular';
+      src: url('https://fontlibrary.org/assets/fonts/fpl-neu/3922a0944c484ac769a9904d0606e0d5/2dd4101d01c96a5531ee1639ea36f1b0/FPLNeuRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+    }
+
+@font-face {
+  font-family: 'HKGroteskRegular';
+      src: url('https://fontlibrary.org/assets/fonts/hk-grotesk/62f3d95c965d7017e0d86df685d2596d/e26fc4caf25322e71cd223f54e3256df/HKGroteskRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+  
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotoslab/v16/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjo0oSmYmRlV9Su1caiTVo.woff) format('woff');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+    
+/*Background*/
+html,body{
+background-color: #EDDCD2 !important;
+}
+/*LOGIN FORM*/
+/*log-in form box*/
+form.login-form {
+  padding-top: 70px;
+  position: relative;
+  height: 500px;
+  width: 850px;
+  margin: auto;
+  padding: 115px 50px;
+  background: no-repeat center center #8E9AAF;   
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 1px 1px 6px rgba(0,0,0, .4);
+}
+
+form.login-form:before{
+content: 'Login';
+font-size: 80px;
+position: absolute;
+top: 10px;
+left: calc(50% - 110px);
+color: #EDEDE8;
+font-weight: normal;
+font-family: 'Roboto Slab';
+text-transform: uppercase;
+letter-spacing: 1px;
+text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+}
+
+/*log-in bubble + email + pass*/
+form.login-form input[type="email"], form.login-form input[type="password"] {
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  width: 100%;
+  padding: 20px 0px;
+  display: inline-block;
+  height: 10px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  margin-top: 10px;
+  transition: all 0.5s ease-in-out;
+  color: black;
+}
+
+/*bubble when hovered*/
+form.login-form input[type="text"]:focus,input[type="password"]:focus  {
+  outline: 0px;
+  border: 2px solid rgba(255, 255, 255, .4);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+form.login-form input[type="text"]:focus,input[type="password"]:focus {
+  opacity: .4;
+}
+form.login-form input[type='submit']:focus {
+  outline: none !important;
+}
+
+
+/*submit button*/
+form.login-form input[type='submit'] {
+  font-family: 'FPLNeuRegular';
+  background-color: rgba(34, 53, 73, .3);
+  color: white;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 60px;
+  border-radius: 20px;
+  margin-top: 60px;
+  transition: all 0.5s ease-in-out;
+  border: none !important;
+  text-transform: uppercase;
+  box-shadow: 0px 3px 10px rgba(0,0,0, .5);
+
+}
+
+/*form button*/
+form.login-form input[type='submit']:hover {
+  background-color: rgba(0, 0, 0, .1);
+  box-shadow: 0px 4px 10px rgba(0,0,0, .5);
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+form.login-form label {
+  color: white;
+  display: block;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .2);
+}
+
+/*label for email + password*/
+label[for='email'] {
+  padding-bottom: 1%;
+}
+
+label[for='password'] {
+  padding-top: 5%;
+  padding-bottom: 1%;
+}
+
+
+form.login-form textarea {
+  border: none;
+  width: 89%;
+  padding: 10px 20px;
+  display: block;
+  height: 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  margin-top: 10px;
+  transition: all 0.5s ease-in-out;
+
+}
+
+
+.nav{
+  width: max-content;
+  line-height: 35px;
+  font-size: 14px;
+  min-width: 600px;
+  display: inline-block;
+  align-items: center;
+  justify-content: space-around !important;
+  font-family: 'Tahoma' !important;
+  margin: auto;
+  background: none !important;
+  text-transform: capitalize;
+  padding-bottom:25px;
+  border: none !important;
+}
+
+.nav-pills {
+  color: grey;
+  background: none !important;
+  display: inline-block;
+  list-style-type: none;
+}
+
+
+a.nav-link.active{
+  position: relative;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #435058;
+  letter-spacing: 0.5px;
+  background: none !important;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .1);
+  }
+
+
+.li{
+ display:inline;
+}
+
+a.nav-link.active:after{
+content: '';
+position: absolute;
+background-color: #FFF1E6;
+height: 2px;
+width: 0%;
+left: 0;
+bottom: 0px;
+transition: 0.5s;
+}
+
+/*add hover effect for navigation*/
+a.nav-link.active:hover:after{
+  width: 100%;
+  text-decoration: none;
+}
+
+a.nav-link:hover{
+  color: #6C757D;
+}
+
+
+/* navigation
+nav{
+  width: max-content;
+  line-height: 35px;
+  font-size: 14px;
+  min-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Tahoma' !important;
+  margin: auto;
+  text-transform: capitalize;
+  padding-bottom:25px;
+}
+
+a.nav-link active{
+  position: relative;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #435058;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .1);
+  }
+
+a.nav-link:active:after{
+content: '';
+position: absolute;
+background-color: #FFF1E6;
+height: 2px;
+width: 0%;
+left: 0;
+bottom: 0px;
+transition: 0.5s;
+}
+
+a.nav-link:hover:after{
+  width: 100%;
+}
+
+a.nav-link:hover{
+  color: #6C757D;
+} */
+
+/*REGISTRATION FORM*/
+form.reg-form {
+  padding-top: 80px;
+  padding-bottom: 20px;
+  position: relative;
+  height: 500px;
+  width: 850px;
+  margin: auto;
+  padding: 0px 50px;
+  padding-top: 100px;
+  background: no-repeat center center #8E9AAF;   
+  background-size: cover;
+  overflow: auto;
+  border-radius: 15px;
+  box-shadow: 1px 1px 6px rgba(0,0,0, .4);
+}
+
+/*scrollbar*/
+form.reg-form::-webkit-scrollbar{
+  display: block;
+  width: 1em;
+  color:rgba(0, 0, 0, .1);
+  overflow: scroll;
+  height: 0em;
+}
+
+form.reg-form:before{
+  content: 'Register';
+  font-size: 80px;
+  position: absolute;
+  top: 10px;
+  right: calc(50% - 195px);
+  color: #EDEDE8;
+  font-weight: normal;
+  font-family: 'Roboto Slab';
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+  }
+
+  /*reg bubble + email + pass*/
+  form.reg-form input[type="text"], form.reg-form input[type="password"], form.reg-form input[type="email"], form.reg-form input[type="confirm"] {
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  width: 100%;
+  padding: 20px 5px;
+  display: inline-block;
+  height: 15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  margin-top: 10x;
+  transition: all 0.5s ease-in-out;
+  color: black;
+}
+
+form.login-form input[type="text"]:focus,input[type="password"]:focus, input[type="email"]:focus, input[type="confirm"]:focus {
+  opacity: .4;
+}
+
+ /*submit button*/
+ form.reg-form input[type='submit'] {
+  font-family: 'FPLNeuRegular';
+  background-color: rgba(34, 53, 73, .3);
+  color: white;
+  width: 100%;
+  padding: none !important;
+  display: block;
+  height: 60px;
+  border-radius: 20px;
+  margin-top: 40px;
+  transition: all 0.5s ease-in-out;
+  border: none !important;
+  text-transform: uppercase;
+  box-shadow: 0px 3px 10px rgba(0,0,0, .5);
+}
+
+/*form button*/
+form.reg-form input[type='submit']:hover {
+  background-color: rgba(0, 0, 0, .1);
+  box-shadow: 0px 4px 10px rgba(0,0,0, .5);
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/*label for all labels*/
+form.reg-form label {
+  color: white;
+  display: block;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .2);
+}
+label[for='username'] {
+  padding-top: 4%;
+  padding-bottom: 1%;
+}
+label[for='email'] {
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+label[for='password']{
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+label[for='confirm'] {
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+
+/*accept terms of srevice*/
+label[for='accept_tos']{
+  width: 100%;
+  padding-top: 5%;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .2);
+  height: 15%;
+  padding-left: 0%;
+}
+
+form.reg-form input[type='accept_tos']{
+  width: 100%;
+  height: 10%;
+  padding-left: 40%;
+}
+
+/*allergies + dropdown-menu*/
+.multiselect {
+width: 300px;
+background-color: rgba(255,255,255, .3);
+/*left: calc(50% - 110px);*/
+/*position: relative;*/
+
+}
+.selectBox {
+position: relative;
+/*left: calc(50% - 110px);*/
+}
+.selectBox select {
+width: 100%;
+font-weight: normal;
+background-color: rgba(255,255,255, 0.1);
+/*left: calc(50% - 240px);*/
+}
+.overSelect {
+position: absolute;
+left: 0; right: 0; top: 0; bottom: 0;
+}
+
+#checkboxes {
+display: none;
+border: 1px #6C757D solid !important;
+background-color: rgba(255,255,255, 0.1);
+}
+#checkboxes label {
+display: block;
+color: black;
+text-shadow: none !important;
+}
+#checkboxes label:hover {
+background-color: rgba(0,0,0, .2);
+}
+
+/*Home Page*/
+h1 {
+display: block;
+font-size: 13px !important;
+position: absolute;
+width: 50%;
+padding: 0.50em;
+margin-right: 0em;
+bottom: 0px;
+font-weight: normal;
+font-family: 'tahoma';
+color: rgba(0,0,0, .6);
+}
+
+#heartsdesire{
+display: block;
+font-size: 60px !important;
+position: absolute;
+width: 450px;
+padding: 2.1em;
+margin-left: 110px;
+font-weight: normal;
+top: 0px;
+font-family: initial;
+color: rgba(255,255,255, .9);
+text-shadow: 1px 3px 1px rgba(0,0,0, .2);
+}
+
+h3 {
+display: block;
+font-size: 80px !important;
+position: absolute;
+width: 450px;
+padding: 3.3em;
+margin-left: -40px;
+font-weight: normal;
+margin-top: 65px;
+font-family: 'Dancing Script', Cursive;
+color: rgba(255,255,255, 1);
+text-shadow: 1px 3px 2px rgba(0,0,0, .3)
+}
+
+
