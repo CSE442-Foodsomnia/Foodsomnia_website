@@ -84,9 +84,10 @@ class Liked(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
 
-    def __init__(self, user_id, recipe_id):
+    def __init__(self, user_id, recipe_id, timestamp):
         self.user_id = user_id
         self.recipe_id = recipe_id
+        self.pub_timestamp = timestamp
 
 
 class Disliked(db.Model):
