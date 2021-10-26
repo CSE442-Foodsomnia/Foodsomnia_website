@@ -165,6 +165,7 @@ form.login-form textarea {
   text-transform: capitalize;
   padding-bottom:25px;
   border: none !important;
+  color: black;
 }
 
 .nav-pills {
@@ -179,7 +180,8 @@ a.nav-link.active{
   position: relative;
   padding: 0 10px;
   text-decoration: none;
-  color: #435058;
+  color: #435058 !important;
+  font-family: 'Roboto Condensed';
   letter-spacing: 0.5px;
   background: none !important;
   text-shadow: 1px 1px 5px rgba(0,0,0, .1);
@@ -381,7 +383,7 @@ form.reg-form input[type='accept_tos']{
 /*allergies + dropdown-menu*/
 .multiselect {
 width: 300px;
-background-color: rgba(255,255,255, .3);
+background-color: rgba(255,255,255, 0.2);
 /*left: calc(50% - 110px);*/
 /*position: relative;*/
 
@@ -403,20 +405,21 @@ left: 0; right: 0; top: 0; bottom: 0;
 
 #checkboxes {
 display: none;
-border: 1px #6C757D solid !important;
-background-color: rgba(255,255,255, 0.1);
+border: 0.5px #6C757D solid !important;
+background-color: rgba(255,255,255, 0);
 }
 #checkboxes label {
 display: block;
 color: black;
 text-shadow: none !important;
 }
+
 #checkboxes label:hover {
 background-color: rgba(0,0,0, .2);
 }
 
 /*Home Page*/
-h1 {
+/* h1 {
 display: block;
 font-size: 13px !important;
 position: absolute;
@@ -427,9 +430,9 @@ bottom: 0px;
 font-weight: normal;
 font-family: 'tahoma';
 color: rgba(0,0,0, .6);
-}
+} */
 
-h2 {
+h2 { /*Cook to your heart's...*/
 display: block;
 font-size: 60px !important;
 position: absolute;
@@ -443,7 +446,7 @@ color: rgba(255,255,255, .9);
 text-shadow: 1px 3px 1px rgba(0,0,0, .2);
 }
 
-h3 {
+h3 { /*Desire*/
 display: block;
 font-size: 80px !important;
 position: absolute;
@@ -454,7 +457,20 @@ font-weight: normal;
 margin-top: 65px;
 font-family: 'Dancing Script', Cursive;
 color: rgba(255,255,255, 1);
-text-shadow: 1px 3px 2px rgba(0,0,0, .3)
+text-shadow: 1px 3px 2px rgba(0,0,0, .3);
 }
 
+h4 { /*name*/
+  display: block;
+  font-size: 50px !important;
+  position: absolute;
+  width: 50%;
+  padding: 0.50em;
+  margin-right: 0em;
+  bottom: -100px;
+  font-weight: normal;
+  font-family: 'tahoma';
+  color: rgba(0,0,0, .6);
+  }
+  /*correct the log-in*/
 
