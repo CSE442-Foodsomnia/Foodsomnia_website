@@ -23,11 +23,11 @@ class RegistrationForm(FlaskForm):
 
 
     accept_tos = BooleanField('I accept the Terms Of Service', [validators.DataRequired()])
-    submit = SubmitField('Submit!')
+    submit = SubmitField('Register')
 
 
 
 class LoginForm(FlaskForm):
     email = EmailField('Email Address', [validators.Length(min=6, max=35)])
     password = PasswordField('Password')
-    submit = SubmitField('Submit!')
+    submit = SubmitField('Login')

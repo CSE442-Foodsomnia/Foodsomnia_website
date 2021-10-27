@@ -27,95 +27,120 @@
     
 /*Background*/
 html,body{
-background-color: #EDDCD2 !important;
+  background-color: #D9C5B2 !important;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
+
 /*LOGIN FORM*/
 /*log-in form box*/
-form.login-form {
-  padding-top: 70px;
-  position: relative;
-  height: 500px;
-  width: 850px;
-  margin: auto;
-  padding: 115px 50px;
-  background: no-repeat center center #8E9AAF;   
+form.login-form, form.reg-form {
+  position: absolute;
+  height: 520px;
+  width: 400px;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px 30px;
+  background: no-repeat center center #7E7F83;   
   background-size: cover;
   border-radius: 15px;
   box-shadow: 1px 1px 6px rgba(0,0,0, .4);
+  /*scrollbar*/
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+form.reg-form:before{
+  content: 'Sign up';
+  font-size: 50px;
+  /* position: absolute; */
+  margin-left: calc(50% - 90px);
+  color: #EDEDE8;
+  font-weight: normal;
+  font-family: 'Roboto Slab';
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+  border-bottom: 0.2px solid #8D8D92;
+  padding-bottom: 5px;
 }
 
 form.login-form:before{
-content: 'Login';
-font-size: 80px;
-position: absolute;
-top: 10px;
-left: calc(50% - 110px);
-color: #EDEDE8;
-font-weight: normal;
-font-family: 'Roboto Slab';
-text-transform: uppercase;
-letter-spacing: 1px;
-text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+  content: 'Sign in';
+  font-size: 50px;
+  /* position: absolute; */
+  margin-left: calc(50% - 80px);
+  color: #EDEDE8;
+  font-weight: normal;
+  font-family: 'Roboto Slab';
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+  border-bottom: 0.2px solid #8D8D92;
+  padding-bottom: 5px;
 }
 
+form.login-form p, form.reg-form p{
+  margin: 0;
+  padding: 0;
+}
+
+form.login-form input, form.reg-form input {
+  margin-bottom: 20px;
+  width: 100%;
+}
 /*log-in bubble + email + pass*/
-form.login-form input[type="email"], form.login-form input[type="password"] {
+form.login-form input[type="email"], input[type="password"], form.reg-form input[type="text"], form.reg-form input[type="password"], form.reg-form input[type="email"], form.reg-form input[type="confirm"] {
   font-family: 'Montserrat', sans-serif;
   border: none;
-  width: 100%;
-  padding: 20px 0px;
+  border-bottom: 1px solid #D4CDC3;
   display: inline-block;
-  height: 10px;
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0);
-  overflow: hidden;
+  height: 40px;
+  background: transparent;
+  outline: none !important;
   margin-top: 10px;
   transition: all 0.5s ease-in-out;
   color: black;
-}
-
-/*bubble when hovered*/
-form.login-form input[type="text"]:focus,input[type="password"]:focus  {
-  outline: 0px;
-  border: 2px solid rgba(255, 255, 255, .4);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.2);
+  font-size: 15px;
 }
 
 
-form.login-form input[type="text"]:focus,input[type="password"]:focus {
+form.login-form input[type="text"]:focus,input[type="password"]:focus, form.reg-form input[type="text"]:focus,input[type="password"]:focus {
   opacity: .4;
 }
-form.login-form input[type='submit']:focus {
+form.login-form input[type='submit']:focus,  form.reg-form input[type='submit']:focus{
   outline: none !important;
 }
 
 
 /*submit button*/
-form.login-form input[type='submit'] {
-  font-family: 'FPLNeuRegular';
-  background-color: rgba(34, 53, 73, .3);
+form.login-form input[type='submit'], form.reg-form input[type='submit'] {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #BCAC9B;
   color: white;
   width: 100%;
-  padding: 10px 20px;
-  display: block;
-  height: 60px;
-  border-radius: 20px;
+  text-align: center;
+  outline: none;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 2px;
   margin-top: 60px;
   transition: all 0.5s ease-in-out;
   border: none !important;
-  text-transform: uppercase;
-  box-shadow: 0px 3px 10px rgba(0,0,0, .5);
-
+  text-transform: capitalize;
+  box-shadow: 0.1px 0.3px 6px 2px rgba(0,0,0, .1);
 }
 
 /*form button*/
-form.login-form input[type='submit']:hover {
-  background-color: rgba(0, 0, 0, .1);
-  box-shadow: 0px 4px 10px rgba(0,0,0, .5);
+form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover {
+  background-color: #BCAC9B;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 form.login-form label {
@@ -135,7 +160,7 @@ label[for='password'] {
 }
 
 
-form.login-form textarea {
+/* form.login-form textarea {
   border: none;
   width: 89%;
   padding: 10px 20px;
@@ -148,7 +173,7 @@ form.login-form textarea {
   margin-top: 10px;
   transition: all 0.5s ease-in-out;
 
-}
+} */
 
 
 .nav{
@@ -167,19 +192,20 @@ form.login-form textarea {
   border: none !important;
 }
 
-.nav-pills {
+/* .nav-pills {
   color: grey;
   background: none !important;
   display: inline-block;
   list-style-type: none;
-}
+} */
 
 
 a.nav-link.active{
   position: relative;
   padding: 0 10px;
+  font-weight: normal;
   text-decoration: none;
-  color: #435058;
+  color: #7A6C5D !important;
   letter-spacing: 0.5px;
   background: none !important;
   text-shadow: 1px 1px 5px rgba(0,0,0, .1);
@@ -193,7 +219,7 @@ a.nav-link.active{
 a.nav-link.active:after{
 content: '';
 position: absolute;
-background-color: #FFF1E6;
+background-color: #BCAC9B;
 height: 2px;
 width: 0%;
 left: 0;
@@ -208,136 +234,11 @@ a.nav-link.active:hover:after{
 }
 
 a.nav-link:hover{
-  color: #6C757D;
-}
-
-
-/* navigation
-nav{
-  width: max-content;
-  line-height: 35px;
-  font-size: 14px;
-  min-width: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  font-family: 'Tahoma' !important;
-  margin: auto;
-  text-transform: capitalize;
-  padding-bottom:25px;
-}
-
-a.nav-link active{
-  position: relative;
-  padding: 0 10px;
-  text-decoration: none;
-  color: #435058;
-  letter-spacing: 0.5px;
-  text-shadow: 1px 1px 5px rgba(0,0,0, .1);
-  }
-
-a.nav-link:active:after{
-content: '';
-position: absolute;
-background-color: #FFF1E6;
-height: 2px;
-width: 0%;
-left: 0;
-bottom: 0px;
-transition: 0.5s;
-}
-
-a.nav-link:hover:after{
-  width: 100%;
-}
-
-a.nav-link:hover{
-  color: #6C757D;
-} */
-
-/*REGISTRATION FORM*/
-form.reg-form {
-  padding-top: 80px;
-  padding-bottom: 20px;
-  position: relative;
-  height: 500px;
-  width: 850px;
-  margin: auto;
-  padding: 0px 50px;
-  padding-top: 100px;
-  background: no-repeat center center #8E9AAF;   
-  background-size: cover;
-  overflow: auto;
-  border-radius: 15px;
-  box-shadow: 1px 1px 6px rgba(0,0,0, .4);
-}
-
-/*scrollbar*/
-form.reg-form::-webkit-scrollbar{
-  display: block;
-  width: 1em;
-  color:rgba(0, 0, 0, .1);
-  overflow: scroll;
-  height: 0em;
-}
-
-form.reg-form:before{
-  content: 'Register';
-  font-size: 80px;
-  position: absolute;
-  top: 10px;
-  right: calc(50% - 195px);
-  color: #EDEDE8;
-  font-weight: normal;
-  font-family: 'Roboto Slab';
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 5px rgba(0,0,0, .3);
-  }
-
-  /*reg bubble + email + pass*/
-  form.reg-form input[type="text"], form.reg-form input[type="password"], form.reg-form input[type="email"], form.reg-form input[type="confirm"] {
-  font-family: 'Montserrat', sans-serif;
-  border: none;
-  width: 100%;
-  padding: 20px 5px;
-  display: inline-block;
-  height: 15px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-  margin-top: 10x;
-  transition: all 0.5s ease-in-out;
-  color: black;
+  cursor: pointer;
 }
 
 form.login-form input[type="text"]:focus,input[type="password"]:focus, input[type="email"]:focus, input[type="confirm"]:focus {
   opacity: .4;
-}
-
- /*submit button*/
- form.reg-form input[type='submit'] {
-  font-family: 'FPLNeuRegular';
-  background-color: rgba(34, 53, 73, .3);
-  color: white;
-  width: 100%;
-  padding: none !important;
-  display: block;
-  height: 60px;
-  border-radius: 20px;
-  margin-top: 40px;
-  transition: all 0.5s ease-in-out;
-  border: none !important;
-  text-transform: uppercase;
-  box-shadow: 0px 3px 10px rgba(0,0,0, .5);
-}
-
-/*form button*/
-form.reg-form input[type='submit']:hover {
-  background-color: rgba(0, 0, 0, .1);
-  box-shadow: 0px 4px 10px rgba(0,0,0, .5);
-  cursor: pointer;
-  opacity: 0.6;
 }
 
 /*label for all labels*/
@@ -347,7 +248,7 @@ form.reg-form label {
   text-shadow: 1px 1px 5px rgba(0,0,0, .2);
 }
 label[for='username'] {
-  padding-top: 4%;
+  padding-top: 10%;
   padding-bottom: 1%;
 }
 label[for='email'] {
@@ -363,25 +264,11 @@ label[for='confirm'] {
   padding-bottom: 1%;
 }
 
-/*accept terms of srevice*/
-label[for='accept_tos']{
-  width: 100%;
-  padding-top: 5%;
-  text-shadow: 1px 1px 5px rgba(0,0,0, .2);
-  height: 15%;
-  padding-left: 0%;
-}
-
-form.reg-form input[type='accept_tos']{
-  width: 100%;
-  height: 10%;
-  padding-left: 40%;
-}
-
 /*allergies + dropdown-menu*/
 .multiselect {
-width: 300px;
+width: 340px;
 background-color: rgba(255,255,255, .3);
+line-height: 1;
 /*left: calc(50% - 110px);*/
 /*position: relative;*/
 
@@ -392,13 +279,15 @@ position: relative;
 }
 .selectBox select {
 width: 100%;
+text-align: left;
 font-weight: normal;
 background-color: rgba(255,255,255, 0.1);
 /*left: calc(50% - 240px);*/
 }
 .overSelect {
 position: absolute;
-left: 0; right: 0; top: 0; bottom: 0;
+left: 0px; right: 0px; top: 0; bottom: 0;
+align-items: flex-end;
 }
 
 #checkboxes {
@@ -406,13 +295,50 @@ display: none;
 border: 1px #6C757D solid !important;
 background-color: rgba(255,255,255, 0.1);
 }
+
 #checkboxes label {
 display: block;
 color: black;
+padding: 5px;
+padding-left: 20px;
+text-indent: -15px;
+text-align: left;
 text-shadow: none !important;
 }
 #checkboxes label:hover {
 background-color: rgba(0,0,0, .2);
+}
+.multiselect input[type="checkbox"] {
+  position: relative;
+  vertical-align: middle !important;
+  float: right;
+  padding: 50px;
+  height: 15px;
+  width: 15px;
+  top: -1px;
+  margin: 0;
+}
+
+/*accept terms of srevice*/
+label[for='accept_tos']{
+  width: 100%;
+  padding-top: 15%;
+  text-align: left;
+  font-size: 15px;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .2);
+  height: 15%;
+  padding-left: 0%;
+}
+
+form.reg-form input[type="accept_tos"], form.reg-form input[type="checkbox"] {
+  position: relative;
+  vertical-align: middle !important;
+  float: right;
+  padding: 50px;
+  height: 15px;
+  width: 15px;
+  top: -30px;
+  margin: 10px;
 }
 
 /*Home Page*/
