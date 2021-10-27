@@ -321,24 +321,24 @@ background-color: rgba(0,0,0, .2);
 
 /*accept terms of srevice*/
 label[for='accept_tos']{
+  position: relative;
   width: 100%;
   padding-top: 15%;
   text-align: left;
-  font-size: 15px;
+  top: 15px;
   text-shadow: 1px 1px 5px rgba(0,0,0, .2);
-  height: 15%;
   padding-left: 0%;
 }
 
-form.reg-form input[type="accept_tos"], form.reg-form input[type="checkbox"] {
+form.reg-form input[type="checkbox"] {
   position: relative;
   vertical-align: middle !important;
   float: right;
   padding: 50px;
   height: 15px;
   width: 15px;
-  top: -30px;
-  margin: 10px;
+  top: -1px;
+  margin: 0;
 }
 
 /*Home Page*/
