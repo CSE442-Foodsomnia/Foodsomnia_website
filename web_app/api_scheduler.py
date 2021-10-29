@@ -6,7 +6,7 @@ import sys
 import re
 
 
-RECIPE_COUNT = 100
+RECIPE_COUNT = 50
 
 
 JOKE = 0
@@ -81,6 +81,7 @@ def store_recipes(app):
                             r['vegetarian'],
                             ','.join(ingredient_list),
                             clean_summary,
+                            r['sourceUrl'],
                             '')
 
             print(rec_db, sys.stdout)

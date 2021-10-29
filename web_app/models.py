@@ -1,6 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from datetime import datetime
 
 
 class User(db.Model, UserMixin):
@@ -44,10 +45,12 @@ class Recipe(db.Model):
     vegetarian = db.Column(db.Boolean(), default=False)
     ingredients = db.Column(db.String(), unique=False)
     summary = db.Column(db.String(), unique=True)
+    source_url = db.Column(db.String(), unique=True)
     author = db.Column(db.String(), unique=False)
 
 
-    def __init__(self, spoonacular_id, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, author=""):
+
+    def __init__(self, spoonacular_id, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, source_url, author=""):
         self.spoonacular_id = spoonacular_id
         self.title = title
         self.image = image
@@ -56,6 +59,7 @@ class Recipe(db.Model):
         self.vegetarian = vegetarian
         self.ingredients = ingredients
         self.summary = summary
+        self.source_url = source_url
         self.author = author
 
 
@@ -68,6 +72,7 @@ class Recipe(db.Model):
                     vegetarian: {self.vegetarian},
                     ingredients: {self.ingredients},
                     summary: {self.summary},
+                    url: {self.source_url},
                     author: {self.author}"""
 
 
@@ -83,6 +88,7 @@ class Liked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    pub_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, user_id, recipe_id):
         self.user_id = user_id
@@ -94,6 +100,7 @@ class Disliked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    pub_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, user_id, recipe_id):
         self.user_id = user_id
