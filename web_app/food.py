@@ -56,9 +56,10 @@ def food_recommendation():
     return render_template('swipe.html', recipe=random_recipe)
 
 
-@food.route("/trending")
+@food.route("/Trending")
 def trending():
-    return render_template('home.html')
+    print("HELLO")
+    return render_template('trending.html')
 
 
 @food.route("/liked")
