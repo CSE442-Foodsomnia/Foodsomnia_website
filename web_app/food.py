@@ -59,7 +59,8 @@ def food_recommendation():
 @food.route("/Trending")
 def trending():
     print("HELLO")
-    return render_template('trending.html')
+    trending = "HELLO"
+    return render_template('trending.html', check = trending)
 
 
 @food.route("/liked")
