@@ -49,7 +49,7 @@ form.login-form, form.reg-form {
   box-shadow: 1px 1px 6px rgba(0,0,0, .4);
   /*scrollbar*/
   overflow-y: scroll;
-  scrollbar-color: rebeccapurple green;
+  scrollbar-color: rgba(181, 174, 178, 0.8), #7E7F83;
   scrollbar-width: thin;
 }
 
