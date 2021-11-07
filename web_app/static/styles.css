@@ -175,29 +175,25 @@ label[for='password'] {
 
 } */
 
-
 .nav{
-  width: max-content;
-  line-height: 35px;
+  width: 100%;
+  line-height: 36px;
   font-size: 14px;
   min-width: 600px;
   display: inline-block;
   align-items: center;
-  justify-content: space-around !important;
+  justify-content: space-evenly !important;
   font-family: 'Tahoma' !important;
   margin: auto;
-  background: none !important;
+  background: #BCAC9B !important;
   text-transform: capitalize;
-  padding-bottom:25px;
+  padding-bottom: 4px;
   border: none !important;
 }
 
-/* .nav-pills {
-  color: grey;
-  background: none !important;
-  display: inline-block;
-  list-style-type: none;
-} */
+.nav-pills {
+  box-shadow: 0 0px 5px rgba(0,0,0,.4);
+}
 
 
 a.nav-link.active{
@@ -219,11 +215,11 @@ a.nav-link.active{
 a.nav-link.active:after{
 content: '';
 position: absolute;
-background-color: #BCAC9B;
+background-color: #D9C5B2;
 height: 2px;
 width: 0%;
 left: 0;
-bottom: 0px;
+bottom: 5px;
 transition: 0.5s;
 }
 
