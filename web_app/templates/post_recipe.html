@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Post A Recipe{% endblock %}
+
+
+{% block content%}
+<form method="post">
+  <p>
+    {{form.csrf_token}} <br>
+    {{form.title.label}} {{form.title()}} <br>
+    {{form.dairyFree.label}} {{form.dairyFree()}} <br>
+    {{form.glutenFree.label}} {{form.glutenFree()}} <br>
+    {{form.vegetarian.label}} {{form.vegetarian()}} <br>
+    {{form.ingredients.label}} {{form.ingredients()}} <br>
+    {{form.summary.label}} {{form.summary()}} <br>
+    {{form.source_url.label}} {{form.source_url()}} <br>
+    {{form.submit()}} <br>
+  </p>
+</form>
+
+
+{% endblock %}

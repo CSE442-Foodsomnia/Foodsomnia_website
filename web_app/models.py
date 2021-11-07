@@ -1,6 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from datetime import datetime
 
 
 class User(db.Model, UserMixin):
@@ -36,7 +37,6 @@ class User(db.Model, UserMixin):
 class Recipe(db.Model):
     __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
-    spoonacular_id = db.Column(db.Integer, unique=True)
     title = db.Column(db.String(), unique=True)
     image = db.Column(db.String(), unique=True)
     dairyFree = db.Column(db.Boolean(), default=False)
@@ -44,11 +44,12 @@ class Recipe(db.Model):
     vegetarian = db.Column(db.Boolean(), default=False)
     ingredients = db.Column(db.String(), unique=False)
     summary = db.Column(db.String(), unique=True)
+    source_url = db.Column(db.String(), unique=True)
     author = db.Column(db.String(), unique=False)
 
 
-    def __init__(self, spoonacular_id, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, author=""):
-        self.spoonacular_id = spoonacular_id
+
+    def __init__(self, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, source_url, author=""):
         self.title = title
         self.image = image
         self.dairyFree = dairyFree
@@ -56,18 +57,19 @@ class Recipe(db.Model):
         self.vegetarian = vegetarian
         self.ingredients = ingredients
         self.summary = summary
+        self.source_url = source_url
         self.author = author
 
 
     def __str__(self):
-        return f"""spoonacular_id: {self.spoonacular_id},
-                    title: {self.title},
+        return f""" title: {self.title},
                     image: {self.image},
                     dairyFree: {self.dairyFree},
                     glutenFree: {self.glutenFree},
                     vegetarian: {self.vegetarian},
                     ingredients: {self.ingredients},
                     summary: {self.summary},
+                    url: {self.source_url},
                     author: {self.author}"""
 
 
@@ -83,6 +85,7 @@ class Liked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    pub_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, user_id, recipe_id):
         self.user_id = user_id
@@ -94,6 +97,7 @@ class Disliked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    pub_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, user_id, recipe_id):
         self.user_id = user_id

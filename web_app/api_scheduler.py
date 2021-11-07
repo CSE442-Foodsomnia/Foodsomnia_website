@@ -6,7 +6,7 @@ import sys
 import re
 
 
-RECIPE_COUNT = 100
+RECIPE_COUNT = 50
 
 
 JOKE = 0
@@ -73,14 +73,14 @@ def store_recipes(app):
             clean_summary = re.sub(html_cleaner, '', r['summary'])
             print(clean_summary)
             print('================================================')
-            rec_db = Recipe(r['id'],
-                            r['title'],
+            rec_db = Recipe(r['title'],
                             r['image'],
                             r['dairyFree'],
                             r['glutenFree'],
                             r['vegetarian'],
                             ','.join(ingredient_list),
                             clean_summary,
+                            r['sourceUrl'],
                             '')
 
             print(rec_db, sys.stdout)

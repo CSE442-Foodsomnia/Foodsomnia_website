@@ -11,7 +11,7 @@ migrate = Migrate(app, db)
 
 
 # Do NOT share this
-API_KEY = "d9d6101985844e92a47c1a1782facda0"
+API_KEY = "3262a49e04d74260ab069b121615d08a"
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -48,7 +48,7 @@ def init_app():
     from .api_scheduler import store_recipes
     scheduler = APScheduler()
     scheduler.init_app(app)
-    app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=30, id="DB1")
+    app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=10, id="DB1")
     # scheduler.start()
 
     return app
