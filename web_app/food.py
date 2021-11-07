@@ -23,20 +23,22 @@ def food_recommendation():
     if request.method == 'POST':
         print("post!")
         key_pressed = request.get_json()["key_pressed"]
+        displayed_recipe_id = request.get_json()["displayedrecipe"]
         print(f"keypressed: {key_pressed}")
+        print(f"displayedrecipe: {displayed_recipe_id}")
         user_id = current_user.id
 
-        print(user_id, recipe_id, file=sys.stdout)
+        # print(user_id, recipe_id, file=sys.stdout)
 
         if key_pressed == 'left':
-            new_dislike = Disliked(user_id, recipe_id)
+            new_dislike = Disliked(user_id, displayed_recipe_id)
             db.session.add(new_dislike)
             db.session.commit()
             print("added to dislike!")
 
 
         elif key_pressed == 'right':
-            new_like = Liked(user_id, recipe_id)
+            new_like = Liked(user_id, displayed_recipe_id)
             db.session.add(new_like)
             db.session.commit()
             print("added to liked!")
@@ -48,12 +50,8 @@ def food_recommendation():
 
     i = randrange(0, len(recipe_list))
     random_recipe = recipe_list[i]
-    global random_recipe_id
-    random_recipe_id = random_recipe.id
 
-    print(random_recipe_id)
-
-    return render_template('swipe.html', recipe=random_recipe)
+    return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id)
 
 
 @food.route("/trending")
