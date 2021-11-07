@@ -2,11 +2,11 @@ from flask import Blueprint, flash, render_template, redirect, url_for, session,
 from flask import jsonify
 from random import randrange
 import sys
-
+import pandas as pd 
 from . import db
 from .models import Recipe, Liked, Disliked
 from flask_login import login_user, logout_user, login_required, current_user
-
+import datetime 
 
 food = Blueprint("food", __name__)
 
@@ -58,24 +58,24 @@ def food_recommendation():
 
 @food.route("/Trending")
 def trending():
-    print("HELLO")
-    trending = "HELLO"
-    return render_template('trending.html', check = trending)
+    df = pd.read_sql(Liked.query.statement, Liked.query.session.bind)
+    one_month_datetime = datetime.datetime.now() - datetime.timedelta(days=30)
+    one_month_ago_df = df[df['pub_timestamp'] > one_month_datetime]
+    top_10_recipes = one_month_ago_df['recipe_id'].value_counts()[:10].index.tolist() 
+    recipes = Recipe.query.filter(Recipe.id.in_(top_10_recipes)).all() 
+       
+    return render_template('trending.html', trending_recipes = recipes)
 
 
 @food.route("/liked")
 def liked():
-    all_liked = Liked.query.filter_by(user_id=current_user.id)
-
-
-
-    return render_template('liked.html', liked=all_liked)
+    all_liked = Liked.query.filter_by(user_id=current_user.id).all()
+    recipes = Recipe.query.filter(Recipe.id.in_([ l.recipe_id for l in all_liked])).all()    
+    return render_template('liked.html', liked=recipes)
 
 
 @food.route("/disliked")
 def disliked():
     all_disliked = Disliked.query.filter_by(user_id=current_user.id)
-
-
-
-    return render_template('disliked.html', disliked=all_disliked)
+    recipes = Recipe.query.filter(Recipe.id.in_([ l.recipe_id for l in all_disliked])).all()    
+    return render_template('disliked.html', disliked=recipes)
