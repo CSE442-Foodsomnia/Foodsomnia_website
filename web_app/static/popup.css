@@ -1,5 +1,12 @@
 body {font-family: Arial, Helvetica, sans-serif;}
-.modal {
+/*popup portion*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+ }
+ .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -11,28 +18,59 @@ body {font-family: Arial, Helvetica, sans-serif;}
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
+ }
+  
+ /* Modal Content */
+ .modal-content {
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-}
-
-/* The Close Button */
-.close {
+ }
+  
+ /* The Close Button */
+ .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+ }
+  
+ .close:hover,
+ .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
+ }
+ /*end of pop up portion*/
+  
+ /*center the recipe photos*/
+ .card {
+  display: grid;
+  grid-template-columns: 310px;
+  grid-template-rows: 210px 20px 80px;
+  font-family: Tahoma, sans-serif;
+  grid-template-areas: "image" "text";
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0,0,0, .3);
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-top: calc(4% + 50px);
+  /* background-color: #C17C74; */
+ }
+  
+ .card-title {
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+  font-size: 20px;
+ }
+  
+ .card-img-top{
+  grid-area: image;
+  align-items: center;
+  margin-top: 2%;
+  margin-left: 1%;
+ }
+ 
