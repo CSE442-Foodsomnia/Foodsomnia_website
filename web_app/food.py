@@ -82,11 +82,10 @@ def liked():
     return render_template('liked.html', liked=liked_recipes)
 
 
-
 @food.route("/disliked", methods=['GET', 'POST'])
 def disliked():
     all_disliked = Disliked.query.filter_by(user_id=current_user.id)
-
+    recipes = Recipe.query.filter(Recipe.id.in_([l.recipe_id for l in all_disliked])).all()
     disliked_recipes = []
     for dislike in all_disliked:
         disliked_recipes.append(Recipe.query.filter_by(id=dislike.recipe_id).first())

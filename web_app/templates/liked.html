@@ -14,7 +14,7 @@
 				<div class = "col-md-8">
 					<h2 card = "card-title mt-3"> {{recipe.title}} </h2>
 					<p>{{recipe.summary}}</p>
-					<button class = "btn btn-success"> Read More!  </button>
+					<button onclick="window.open('{{recipe.source_url}}');" class = "btn btn-success"> Read More!  </button>
 				</div>
 			</div>
 		</div>
@@ -22,4 +22,47 @@
 </div>
 
 
+
 {% endblock %}
+<script type=text/javascript>
+console.log({{displayedid}})
+    window.addEventListener('keydown', (event) => {
+        switch (event.keyCode) {
+          case 37:
+            // left arrow
+            console.log("left arrow");
+            $.ajax({
+              type: "POST",
+              url: "{{url_for('food.food_recommendation')}}",
+              data: `{"key_pressed":"left"}`,
+              contentType: 'application/json;charset=UTF-8'
+            });
+            window.location.reload();
+            break;
+
+          case 39:
+            // right arrow
+            console.log("right arrow");
+            $.ajax({
+              type: "POST",
+              url: "{{url_for('food.food_recommendation')}}",
+              data: `{"key_pressed":"right", "displayedrecipe":{{displayedid}} }`,
+              contentType: 'application/json;charset=UTF-8'
+            });
+            window.location.reload();
+            break;
+        }
+    });
+
+        function openModal(){
+            document.getElementById("myModal").style.display = "block"
+        }
+        function closeModal(){
+            document.getElementById("myModal").style.display = "none"
+        }
+        window.onclick = function(event) {
+          if (event.target == document.getElementById("myModal")) {
+            document.getElementById("myModal").style.display = "none";
+            }
+        }
+</script>
