@@ -34,7 +34,7 @@
   
  /*LOGIN FORM*/
  /*log-in form box*/
- form.login-form, form.reg-form {
+ form.login-form, form.reg-form, form.swipe-form {
   position: absolute;
   height: 520px;
   width: 400px;
@@ -50,6 +50,22 @@
   overflow-y: scroll;
   scrollbar-color: rgba(181, 174, 178, 0.8), #7E7F83;
   scrollbar-width: thin;
+ }
+
+ form.swipe-form:before{
+  content: 'Add Recipe';
+  font-size: 45px;
+  /* position: absolute; */
+  margin-left: calc(50% - 105px);
+  color: #EDEDE8;
+  font-weight: normal;
+  font-family: 'Roboto Slab';
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+  border-bottom: 0.2px solid #8D8D92;
+  padding-bottom: 5px;
  }
   
  form.reg-form:before{
@@ -84,23 +100,23 @@
   padding-bottom: 5px;
  }
   
- form.login-form p, form.reg-form p{
+ form.login-form p, form.reg-form p, form.swipe-form p{
   margin: 0;
   padding: 0;
  }
   
- form.login-form input, form.reg-form input {
+ form.login-form input, form.reg-form input, form.swipe-form input{
   margin-bottom: 20px;
   width: 100%;
  }
  /*log-in bubble + email + pass*/
- form.login-form input[type="email"], input[type="password"], form.reg-form input[type="text"], form.reg-form input[type="password"], form.reg-form input[type="email"], form.reg-form input[type="confirm"] {
+ form.login-form input[type="email"], input[type="password"], form.reg-form input[type="text"], form.reg-form input[type="password"], form.reg-form input[type="email"], form.reg-form input[type="confirm"], form.swipe-form input[type="text"], form.swipe-form input[type="ingredients"], form.swipe-form input[type="summary"], form.swipe-form input[type="source_url"] {
   font-family: 'Montserrat', sans-serif;
   border: none;
   border-bottom: 1px solid #D4CDC3;
   display: inline-block;
   height: 40px;
-  background: transparent;
+  background: transparent !important;
   outline: none !important;
   margin-top: 10px;
   transition: all 0.5s ease-in-out;
@@ -108,8 +124,7 @@
   font-size: 15px;
  }
   
-  
- form.login-form input[type="text"]:focus,input[type="password"]:focus, form.reg-form input[type="text"]:focus,input[type="password"]:focus {
+ form.login-form input[type="text"]:focus,input[type="password"]:focus, form.reg-form input[type="text"]:focus,input[type="password"]:focus, form.swipe-form input[type="text"]:focus, input[type="password"]:focus {
   opacity: .4;
  }
  form.login-form input[type='submit']:focus,  form.reg-form input[type='submit']:focus{
@@ -118,7 +133,7 @@
   
   
  /*submit button*/
- form.login-form input[type='submit'], form.reg-form input[type='submit'] {
+ form.login-form input[type='submit'], form.reg-form input[type='submit'], form.swipe-form input[type='submit'] {
   font-family: 'Times New Roman', Times, serif;
   background-color: #BCAC9B;
   color: white;
@@ -136,7 +151,7 @@
  }
   
  /*form button*/
- form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover {
+ form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover, form.swipe-form input[type='submit'] {
   background-color: #BCAC9B;
   cursor: pointer;
   opacity: 0.85;
@@ -237,12 +252,12 @@
  }
   
  /*label for all labels*/
- form.reg-form label {
+ form.reg-form label, form.swipe-form label {
   color: white;
   display: block;
   text-shadow: 1px 1px 5px rgba(0,0,0, .2);
  }
- label[for='username'] {
+ label[for='username'], label[for='ingredients'] {
   padding-top: 10%;
   padding-bottom: 1%;
  }
@@ -324,8 +339,17 @@
   text-shadow: 1px 1px 5px rgba(0,0,0, .2);
   padding-left: 0%;
  }
+
+ label[for='dairyFree'], label[for='glutenFree'], label[for='vegetarian']{
+   position: relative;
+   width: 100%;
+   padding-top: 2%;
+   text-align: left;
+   top: 5px;
+   text-shadow: 1px 1px 5px rgba(0,0,0, .2);
+ }
   
- form.reg-form input[type="checkbox"] {
+ form.reg-form input[type="checkbox"], form.swipe-form input[type="checkbox"] {
   position: relative;
   vertical-align: middle !important;
   float: right;
@@ -377,6 +401,8 @@
  color: rgba(255,255,255, 1);
  text-shadow: 1px 3px 2px rgba(0,0,0, .3)
  }
+
+
   
  
 
