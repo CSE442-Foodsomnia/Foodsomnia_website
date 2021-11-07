@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SelectField, BooleanField, SubmitField, validators
+from wtforms import StringField, PasswordField, SelectField, BooleanField, SubmitField, TextField, validators
 from wtforms.fields.html5 import EmailField
 
 
@@ -31,3 +31,18 @@ class LoginForm(FlaskForm):
     email = EmailField('Email Address', [validators.Length(min=6, max=35)])
     password = PasswordField('Password')
     submit = SubmitField('Submit!')
+
+
+
+class RecipeForm(FlaskForm):
+
+     # id = None
+     title = TextField('Title', [validators.DataRequired()])
+     # pic = None
+     dairyFree = BooleanField('Dairy Free')
+     glutenFree = BooleanField('Gluten Free')
+     vegetarian = BooleanField('Vegetarian')
+     ingredients = TextField('Ingredients', [validators.DataRequired()])
+     summary = TextField('Summary', [validators.DataRequired()])
+     source_url = TextField('Source URL', [validators.DataRequired()])
+     submit = SubmitField('Submit!')

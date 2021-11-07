@@ -2,10 +2,11 @@
 {% block title %}Liked{% endblock %}
 
 
+
 {% block content%}
 
 <div class ="container-fluid mt-15" >
-	{% for recipe in liked %}
+	{% for recipe in liked[0:5] %}
 		<div class = "card mt-3" id = "liked_cards">
 			<div class="row">
 				<div class ="col-md-4">
@@ -20,6 +21,89 @@
 		</div>
 	{% endfor %}
 </div>
+<div class="quotes">
+    </div>
+    <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+    </div>
 
 
+
+<script>
+console.log("asdfsdf")
+	counter = 0
+	likedstuff = []
+	likedstufftitle = []
+	likedstuffsummary = []
+	{% for recipe in liked %}
+		likedstuff.push( '{{recipe.image}}')
+		likedstufftitle.push( '{{recipe.title}}')
+		likedstuffsummary.push( '{{recipe.summary}}')
+		counter = counter +1
+	{% endfor %}
+	console.log(likedstuff)
+	console.log(counter)
+	var numImage = 5
+    window.addEventListener('scroll', () => {
+    console.log("HELLO")
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 5) {
+        	if(numImage < counter){
+        		if(counter-numImage > 4){
+            	showQuotes(5);
+            	numImage = numImage+5
+            	}
+            else{
+            	showQuotes(counter-numImage)
+            	numImage = numImage + counter-numImage
+            }
+            }
+        }
+    }, {
+        passive: true
+    });
+
+	    const loader = document.querySelector('.loader');
+        const quotesEl = document.querySelector('.quotes');
+        const hideLoader = () => {
+        loader.classList.remove('show');
+        };
+
+        const showLoader = () => {
+        loader.classList.add('show');
+        };
+
+
+    function showQuotes(number){
+      for(i=0; i<number; i++){
+      const quoteEl = document.createElement('blockquote');
+      quoteEl.classList.add('quote');
+      quoteEl.innerHTML = `
+          		<div class = "card mt-3" id = "liked_cards">
+			<div class="row">
+				<div class ="col-md-4">
+					<img src=`+likedstuff[numImage+i]+` class="image-fluid" width="400" height="250">
+				</div>
+				<div class = "col-md-8">
+					<h2 card = "card-title mt-3"> `+likedstufftitle[numImage+i]+` </h2>
+					<p>`+likedstuffsummary[numImage+i]+`</p>
+					<button class = "btn btn-success"> Read More!  </button>
+				</div>
+			</div>
+		</div>
+        `;
+        quotesEl.appendChild(quoteEl);
+    }
+    console.log(quotesEl.childElementCount)
+    }
+
+
+</script>
 {% endblock %}

@@ -5,14 +5,13 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 
 
-
 db = SQLAlchemy()
 app = Flask(__name__)
 migrate = Migrate(app, db)
 
 
 # Do NOT share this
-API_KEY = "d9d6101985844e92a47c1a1782facda0"
+API_KEY = "3262a49e04d74260ab069b121615d08a"
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -33,7 +32,7 @@ def init_app():
 
     from .models import User
 
-#    create_database(app)
+    create_database(app)
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"
@@ -49,7 +48,7 @@ def init_app():
     from .api_scheduler import store_recipes
     scheduler = APScheduler()
     scheduler.init_app(app)
-    app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=30, id="DB1")
+    app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=10, id="DB1")
     # scheduler.start()
 
     return app
