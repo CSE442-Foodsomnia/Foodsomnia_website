@@ -2,11 +2,14 @@ from flask import Blueprint, flash, render_template, redirect, url_for, session,
 from flask import jsonify
 from random import randrange
 import sys
-
+import pandas as pd 
 from . import db
 from .models import Recipe, Liked, Disliked
 from flask_login import login_user, logout_user, login_required, current_user
+
+import datetime 
 from .forms import RecipeForm
+
 
 
 food = Blueprint("food", __name__)
@@ -56,9 +59,16 @@ def food_recommendation():
     return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id)
 
 
-@food.route("/trending")
+@food.route("/Trending")
 def trending():
-    return render_template('home.html')
+    df = pd.read_sql(Liked.query.statement, Liked.query.session.bind)
+
+    one_month_datetime = datetime.datetime.now() - datetime.timedelta(days=30)
+    one_month_ago_df = df[df['pub_timestamp'] > one_month_datetime]
+    top_10_recipes = one_month_ago_df['recipe_id'].value_counts()[:10].index.tolist() 
+    recipes = Recipe.query.filter(Recipe.id.in_(top_10_recipes)).all() 
+        
+    return render_template('trending.html', trending_recipes = recipes)
 
 
 @food.route("/liked", methods=['GET', 'POST'])
@@ -68,8 +78,9 @@ def liked():
     liked_recipes = []
     for like in all_liked:
         liked_recipes.append(Recipe.query.filter_by(id=like.recipe_id).first())
-
+    print(liked_recipes)    
     return render_template('liked.html', liked=liked_recipes)
+
 
 @food.route("/disliked", methods=['GET', 'POST'])
 def disliked():
@@ -113,3 +124,4 @@ def post_recipe():
         flash("Added the recipe to the database!", "success")
 
     return render_template("post_recipe.html", form=form)
+
