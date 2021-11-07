@@ -37,7 +37,6 @@ class User(db.Model, UserMixin):
 class Recipe(db.Model):
     __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
-    spoonacular_id = db.Column(db.Integer, unique=True)
     title = db.Column(db.String(), unique=True)
     image = db.Column(db.String(), unique=True)
     dairyFree = db.Column(db.Boolean(), default=False)
@@ -50,8 +49,7 @@ class Recipe(db.Model):
 
 
 
-    def __init__(self, spoonacular_id, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, source_url, author=""):
-        self.spoonacular_id = spoonacular_id
+    def __init__(self, title, image, dairyFree, glutenFree, vegetarian, ingredients, summary, source_url, author=""):
         self.title = title
         self.image = image
         self.dairyFree = dairyFree
@@ -64,8 +62,7 @@ class Recipe(db.Model):
 
 
     def __str__(self):
-        return f"""spoonacular_id: {self.spoonacular_id},
-                    title: {self.title},
+        return f""" title: {self.title},
                     image: {self.image},
                     dairyFree: {self.dairyFree},
                     glutenFree: {self.glutenFree},
