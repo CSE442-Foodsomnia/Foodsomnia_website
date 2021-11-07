@@ -149,3 +149,15 @@ def disliked():
     recipe_query = Recipe.query.filter(Recipe.id.in_(recipe_list))
 
     return render_template('disliked.html', disliked=recipe_query)
+
+@food.route("/profile")
+def profile():
+    value = User.query.filter_by(id=current_user.id).all()
+    eggallerg = value[0].egg_allerg
+    fishallerg = value[0].fish_allerg
+    milkallerg = value[0].milk_allerg
+    peanutallerg = value[0].peanut_allerg
+    shellfishallerg=value[0].shellfish_alleg
+    soybeanallerg=value[0].soybeans_allerg
+    wheatallerg = value[0].wheat_allerg
+    return render_template('profile.html',name=current_user.username, ea=eggallerg, fa=fishallerg, ma=milkallerg, pa=peanutallerg, sfa = shellfishallerg, sba = soybeanallerg, wa = wheatallerg)
