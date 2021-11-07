@@ -2,6 +2,7 @@ from flask import Blueprint, flash, render_template, redirect, request, url_for
 from flask import jsonify
 from random import randrange
 import json
+import copy
 
 from . import db
 from .models import Recipe, Liked, Disliked, User
@@ -85,18 +86,20 @@ def food_recommendation():
     print(allergic_array)
     recipe_list = Recipe.query.all()
 
-    i = randrange(0, len(recipe_list))
-    random_recipe = recipe_list[i]
+    new_list = copy.deepcopy(recipe_list)
+    i = randrange(0, len(new_list))
+    random_recipe = new_list[i]
 
     random_recipe.ingredients ="["+random_recipe.ingredients + "]"
     print(random_recipe.ingredients)
+    print("WWWWWWW")
     recipedict = json.loads(random_recipe.ingredients)
     redo = True
     while(redo == True):
         if(nonAllergyLoop(recipedict, allergic_array) == True):
             redo = True
             i = randrange(0, len(recipe_list))
-            random_recipe = recipe_list[i]
+            random_recipe = new_list[i]
             random_recipe.ingredients = "[" + random_recipe.ingredients + "]"
             recipedict = json.loads(random_recipe.ingredients)
         else:

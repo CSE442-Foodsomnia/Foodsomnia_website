@@ -11,12 +11,6 @@
 
 <div class="card" style="width: 18rem;">
   <img onclick="openModal()" src="{{recipe.image}}" class="card-img-top" alt="...">
-
-    <img height="500" width="700" src="{{recipe.image}}" />
-    <img height="500" width="700" src="{{recipe.image}}" />
-    <img height="500" width="700" src="{{recipe.image}}" />
-    <img height="500" width="700" src="{{recipe.image}}" />
-    <img height="500" width="700" src="{{recipe.image}}" />
       <div class="quotes">
     </div>
   <div class="card-body">
@@ -43,11 +37,6 @@
     <p id="content">Description: {{recipe.summary}}</p>
     <p id="ingredients">Ingredients: {{ingredients}}</p>
 
-    <div class="loader">
-            <div></div>
-            <div></div>
-            <div></div>
-    </div>
   </div>
 
 </div>
@@ -56,22 +45,6 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type=text/javascript>
-    window.addEventListener('scroll', () => {
-        const {
-            scrollTop,
-            scrollHeight,
-            clientHeight
-        } = document.documentElement;
-
-        if (scrollTop + clientHeight >= scrollHeight - 5) {
-            numImage = numImage+5
-            showQuotes(5);
-        }
-    }, {
-        passive: true
-    });
-
-
 console.log({{displayedid}})
     window.addEventListener('keydown', (event) => {
         switch (event.keyCode) {
@@ -112,34 +85,6 @@ console.log({{displayedid}})
             document.getElementById("myModal").style.display = "none";
             }
         }
-
-
-        const loader = document.querySelector('.loader');
-        const quotesEl = document.querySelector('.quotes');
-        const hideLoader = () => {
-        loader.classList.remove('show');
-        };
-
-        const showLoader = () => {
-        loader.classList.add('show');
-        };
-
-    numImage = 5
-
-    function showQuotes(number){
-      for(i=0; i<number; i++){
-      const quoteEl = document.createElement('blockquote');
-      quoteEl.classList.add('quote');
-      quoteEl.innerHTML = `
-          <img height="500" width="700" src="{{recipe.image}}" />
-        `;
-        quotesEl.appendChild(quoteEl);
-    }
-    console.log(quotesEl.childElementCount)
-    }
-
-
-
 
 </script>
 
