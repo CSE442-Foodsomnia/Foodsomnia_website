@@ -64,16 +64,14 @@ def trending():
 @food.route("/liked")
 def liked():
     all_liked = Liked.query.filter_by(user_id=current_user.id)
+    recipes = Recipe.query.filter(Recipe.id.in_([l.recipe_id for l in all_liked])).all()
 
-
-
-    return render_template('liked.html', liked=all_liked)
+    return render_template('liked.html', liked=recipes)
 
 
 @food.route("/disliked")
 def disliked():
     all_disliked = Disliked.query.filter_by(user_id=current_user.id)
+    recipes = Recipe.query.filter(Recipe.id.in_([l.recipe_id for l in all_disliked])).all()
 
-
-
-    return render_template('disliked.html', disliked=all_disliked)
+    return render_template('disliked.html', disliked=recipes)

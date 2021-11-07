@@ -14,23 +14,14 @@
 				<div class = "col-md-8">
 					<h2 card = "card-title mt-3"> {{recipe.title}} </h2>
 					<p>{{recipe.summary}}</p>
-					<button onclick="location.href='https://google.com';" class = "btn btn-success"> Read More!  </button>
+					<button onclick="window.open('{{recipe.source_url}}');" class = "btn btn-success"> Read More!  </button>
 				</div>
 			</div>
 		</div>
 	{% endfor %}
 </div>
 
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span onclick="closeModal()" class="close">&times;</span>
-    <img id="contentImage" height="500" width="700" src="{{recipe.image}}" />
-    <p id="content">Description: {{recipe.summary}}</p>
-    <p id="ingredients">Ingredients: {{recipe.ingredients}}</p>
-  </div>
-</div>
 
 {% endblock %}
 <script type=text/javascript>
