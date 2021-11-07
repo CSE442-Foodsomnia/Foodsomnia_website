@@ -6,24 +6,42 @@
 
 {% block content%}
 
-<!-- <link rel="stylesheet" href="{{ url_for('static', filename='popup.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='popup.css') }}">
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
 
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src={{recipe.image}} alt="Card image cap">
+  <img onclick="openModal()" class="card-img-top" src={{recipe.image}} alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{recipe.title}}</h5>
     <p class="card-text">{{recipe.description}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="{{recipe.source_url}}" class="btn btn-primary">Recipe Link</a>
   </div>
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span onclick="closeModal()" class="close">&times;</span>
+    <img id="contentImage" height="500" width="700" src="{{recipe.image}}" />
+    <p id="content">Description: {{recipe.summary}}</p>
+    <p id="ingredients">Ingredients: {{recipe.ingredients}}</p>
+
+    <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+    </div>
+  </div>
+
 </div>
 
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
-console.log({{displayedid}})
+console.log({{displayedid})
     window.addEventListener('keydown', (event) => {
         switch (event.keyCode) {
           case 37:
@@ -51,6 +69,18 @@ console.log({{displayedid}})
             break;
         }
     });
+
+        function openModal(){
+            document.getElementById("myModal").style.display = "block"
+        }
+        function closeModal(){
+            document.getElementById("myModal").style.display = "none"
+        }
+        window.onclick = function(event) {
+          if (event.target == document.getElementById("myModal")) {
+            document.getElementById("myModal").style.display = "none";
+            }
+        }
 </script>
 
 

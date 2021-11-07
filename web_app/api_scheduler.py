@@ -73,8 +73,7 @@ def store_recipes(app):
             clean_summary = re.sub(html_cleaner, '', r['summary'])
             print(clean_summary)
             print('================================================')
-            rec_db = Recipe(r['id'],
-                            r['title'],
+            rec_db = Recipe(r['title'],
                             r['image'],
                             r['dairyFree'],
                             r['glutenFree'],
