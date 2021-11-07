@@ -11,38 +11,18 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
 
 <div class="card" style="width: 18rem;">
-  <img onclick="openModal()" src="{{recipe.image}}" class="card-img-top" alt="...">
+  <img class="card-img-top" src={{recipe.image}} alt="Card image cap">
   <div class="card-body">
-
     <h5 class="card-title">{{recipe.title}}</h5>
-
-    <!-- <p>{{recipe.summary}}</p> -->
-    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    <p class="card-text">{{recipe.description}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-</div>
-
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <p> {{recipe.summary}} </p>
-  </div>
-</div>
-
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span onclick="closeModal()" class="close">&times;</span>
-    <img id="contentImage" height="500" width="700" src="{{recipe.image}}" />
-    <p id="content">Description: {{recipe.summary}}</p>
-    <p id="ingredients">Ingredients: {{recipe.ingredients}}</p>
-  </div>
-
 </div>
 
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type=text/javascript>
+<script>
 console.log({{displayedid}})
     window.addEventListener('keydown', (event) => {
         switch (event.keyCode) {
@@ -52,7 +32,7 @@ console.log({{displayedid}})
             $.ajax({
               type: "POST",
               url: "{{url_for('food.food_recommendation')}}",
-              data: `{"key_pressed":"left"}`,
+              data: JSON.stringify({"key_pressed":"left", "displayedrecipe":{{displayed_id}} }),
               contentType: 'application/json;charset=UTF-8'
             });
             window.location.reload();
@@ -64,26 +44,15 @@ console.log({{displayedid}})
             $.ajax({
               type: "POST",
               url: "{{url_for('food.food_recommendation')}}",
-              data: `{"key_pressed":"right", "displayedrecipe":{{displayedid}} }`,
+              data: JSON.stringify({"key_pressed":"right", "displayedrecipe":{{displayed_id}} }),
               contentType: 'application/json;charset=UTF-8'
             });
             window.location.reload();
             break;
         }
     });
-
-        function openModal(){
-            document.getElementById("myModal").style.display = "block"
-        }
-        function closeModal(){
-            document.getElementById("myModal").style.display = "none"
-        }
-        window.onclick = function(event) {
-          if (event.target == document.getElementById("myModal")) {
-            document.getElementById("myModal").style.display = "none";
-            }
-        }
 </script>
+
 
 
 
