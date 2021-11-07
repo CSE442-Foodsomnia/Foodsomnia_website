@@ -6,6 +6,7 @@ import sys
 from . import db
 from .models import Recipe, Liked, Disliked
 from flask_login import login_user, logout_user, login_required, current_user
+from .forms import RecipeForm
 
 
 food = Blueprint("food", __name__)
@@ -50,6 +51,7 @@ def food_recommendation():
 
     i = randrange(0, len(recipe_list))
     random_recipe = recipe_list[i]
+    print(random_recipe.title)
 
     return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id)
 
@@ -59,17 +61,56 @@ def trending():
     return render_template('home.html')
 
 
-@food.route("/liked")
+@food.route("/liked", methods=['GET', 'POST'])
 def liked():
-    all_liked = Liked.query.filter_by(user_id=current_user.id)
-    recipes = Recipe.query.filter(Recipe.id.in_([l.recipe_id for l in all_liked])).all()
+    all_liked = Liked.query.filter_by(user_id=current_user.id).all()
 
-    return render_template('liked.html', liked=recipes)
+    liked_recipes = []
+    for like in all_liked:
+        liked_recipes.append(Recipe.query.filter_by(id=like.recipe_id).first())
 
+    return render_template('liked.html', liked=liked_recipes)
 
-@food.route("/disliked")
+@food.route("/disliked", methods=['GET', 'POST'])
 def disliked():
     all_disliked = Disliked.query.filter_by(user_id=current_user.id)
     recipes = Recipe.query.filter(Recipe.id.in_([l.recipe_id for l in all_disliked])).all()
 
-    return render_template('disliked.html', disliked=recipes)
+    disliked_recipes = []
+    for dislike in all_disliked:
+        disliked_recipes.append(Recipe.query.filter_by(id=dislike.recipe_id).first())
+
+    return render_template('disliked.html', disliked=disliked_recipes)
+
+
+@food.route("/post", methods=['GET', 'POST'])
+def post_recipe():
+    # Recipe(r['id'],
+    #                 r['title'],
+    #                 r['image'],
+    #                 r['dairyFree'],
+    #                 r['glutenFree'],
+    #                 r['vegetarian'],
+    #                 ','.join(ingredient_list),
+    #                 clean_summary,
+    #                 r['sourceUrl'],
+    #                 '')
+
+
+    form = RecipeForm()
+    if form.validate_on_submit():
+        r = Recipe(form.title.data,
+                    None,
+                    form.dairyFree.data,
+                    form.glutenFree.data,
+                    form.vegetarian.data,
+                    form.ingredients.data,
+                    form.summary.data,
+                    form.source_url.data,
+                    current_user.username)
+
+        db.session.add(r)
+        db.session.commit()
+        flash("Added the recipe to the database!", "success")
+
+    return render_template("post_recipe.html", form=form)
