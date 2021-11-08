@@ -148,7 +148,7 @@ def food_recommendation():
     #     random_recipe_ingredients = random_recipe_ingredients + i[0]["name"]
     #print(random_recipe.ingredients[0])
 
-    return render_template('swipe.html', recipe=random_recipe, displayedid=random_recipe.id, ingredients = random_recipe_ingredients)
+    return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id, ingredients = random_recipe_ingredients)
 
 
 
