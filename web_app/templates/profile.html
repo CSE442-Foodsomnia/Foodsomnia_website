@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+
+{% block content%}
+<h2> Hi, {{name}} </h2>
+
+<h4>Allergies:</h4>
+{% if fa %}
+<h5>Fish</h5>
+{% endif %}
+{% if ea %}
+<h5>Egg</h5>
+{% endif %}
+{% if ma %}
+<h5>Milk</h5>
+{% endif %}
+{% if pa %}
+<h5>Peanuts</h5>
+{% endif %}
+{% if sfa %}
+<h5>Shellfish</h5>
+{% endif %}
+{% if sba %}
+<h5>Soy beans</h5>
+{% endif %}
+{% if wa %}
+<h5>Wheat</h5>
+{% endif %}
+
+
+{% endblock %}
