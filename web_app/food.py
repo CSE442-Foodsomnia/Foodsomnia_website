@@ -219,7 +219,6 @@ def post_recipe():
     return render_template("post_recipe.html", form=form)
 
 
-    return render_template('disliked.html', disliked=disliked_recipes)
 @food.route("/profile")
 def profile():
     value = User.query.filter_by(id=current_user.id).all()
@@ -231,3 +230,9 @@ def profile():
     soybeanallerg=value[0].soybeans_allerg
     wheatallerg = value[0].wheat_allerg
     return render_template('profile.html',name=current_user.username, ea=eggallerg, fa=fishallerg, ma=milkallerg, pa=peanutallerg, sfa = shellfishallerg, sba = soybeanallerg, wa = wheatallerg)
+
+
+@food.route("/my-posts", methods=['GET', 'POST'])
+def my_posts():
+    posts = Recipe.query.filter_by(author=current_user.username).all()
+    return render_template('my_posts.html',posts=posts)
