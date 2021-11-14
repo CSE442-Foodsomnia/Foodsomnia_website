@@ -17,7 +17,7 @@
 					<h2 card = "card-title mt-3">
 					{{ loop.index }}.{{recipe.title}} </h2>
 					<p>{{recipe.summary}}</p>
-					<button class = "btn btn-success"> Read More!  </button>
+					<button onclick="window.open('{{recipe.source_url}}');" class = "btn btn-success"> Read More!  </button>
 				</div>
 			</div>
 		</div>
