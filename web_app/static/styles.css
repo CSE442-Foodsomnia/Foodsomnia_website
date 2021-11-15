@@ -27,6 +27,7 @@
  /*Background*/
  html,body{
   background-color: #D9C5B2 !important;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
