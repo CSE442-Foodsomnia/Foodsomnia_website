@@ -376,9 +376,9 @@
  }
   
  /*Home Page*/
- h2 { /*credits*/
+ /* h2 { 
  display: block;
- font-size: 5px !important;
+ font-size: 6px !important;
  position: absolute;
  width: 50%;
  padding: 0.50em;
@@ -387,7 +387,7 @@
  font-weight: normal;
  font-family: 'tahoma';
  color: rgba(0,0,0, .6);
- }
+ } */
 
  .wrapper {
    /* position:absolute; */
@@ -445,11 +445,11 @@
 
 
  /*image*/
-.foodImg {
+/* .foodImg {
   position: absolute;
   align-content: center;
   max-width: 50%;
   height: 400px;
   left: 45%;
   top: 10%;
-}
+} */
