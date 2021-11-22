@@ -24,11 +24,11 @@
     <h5 href="{{recipe.source_url}}" class="card-title">{{recipe.title}}</h5>
     <p class="card-text">{{recipe.description}}</p>
   </div>
-    <span class="fa fa-star checked"></span>
-  <span class="fa fa-star checked"></span>
-  <span class="fa fa-star checked"></span>
-  <span class="fa fa-star"></span>
-  <span class="fa fa-star"></span>
+  <span id="star1" class="fa fa-star"></span>
+  <span id="star2" class="fa fa-star"></span>
+  <span id="star3" class="fa fa-star"></span>
+  <span id="star4" class="fa fa-star"></span>
+  <span id="star5" class="fa fa-star"></span>
 </div>
 
 <div class="collapse" id="collapseExample">
@@ -54,6 +54,23 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
+if({{rating}} > 0){
+  console.log("YO")
+  document.getElementById("star1").className += " checked";
+}
+if({{rating}} > 1){
+  document.getElementById("star2").className += " checked";
+}
+if({{rating}} > 2){
+  document.getElementById("star3").className += " checked";
+}
+if({{rating}} > 3){
+  document.getElementById("star4").className += " checked";
+}
+if({{rating}} > 4){
+  document.getElementById("star5").className += " checked";
+}
+
 console.log({{displayedid}})
     window.addEventListener('keydown', (event) => {
         switch (event.keyCode) {
