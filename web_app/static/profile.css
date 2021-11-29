@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Genome';
+        src: url('fontlibrary.org/assets/fonts/genome/4bf8165113bfb991e5728ea0b697dfaf/a1fb354951e5732ff9c373c5b7bd5e94/GenomeThin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+@font-face {
+    font-family: 'Poppins';
+        src: url('https://fontlibrary.org/assets/fonts/poppins/fed70e8826194d3ab847c777f43c10ea/731a28a413d642522667a2de8681ff35/PoppinsRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+html, body {
+    font-family: 'Genome';
+    justify-content: center;
+    align-items: center;
+}
