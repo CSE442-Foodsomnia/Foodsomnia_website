@@ -125,17 +125,31 @@ def food_recommendation():
         recipe_id = request.get_json()["displayedrecipe"]
 
         if key_pressed == 'left':
-            new_dislike = Disliked(user_id, displayed_recipe_id)
-            db.session.add(new_dislike)
-            db.session.commit()
-            print("added to dislike!")
+            duplicate_flag = False
+            current_user_dislikes = Disliked.query.filter_by(user_id=current_user.id).all()
+            for r in current_user_dislikes:
+                if r.recipe_id == recipe_id:
+                    duplicate_flag = True
+
+            if not duplicate_flag:
+                new_dislike = Disliked(user_id, displayed_recipe_id)
+                db.session.add(new_dislike)
+                db.session.commit()
+                print("added to dislike!")
 
 
         elif key_pressed == 'right':
-            new_like = Liked(user_id, displayed_recipe_id)
-            db.session.add(new_like)
-            db.session.commit()
-            print("added to liked!")
+            duplicate_flag = False
+            current_user_likes = Liked.query.filter_by(user_id=current_user.id).all()
+            for r in current_user_likes:
+                if r.recipe_id == recipe_id:
+                    duplicate_flag = True
+
+            if not duplicate_flag:
+                new_like = Liked(user_id, displayed_recipe_id)
+                db.session.add(new_like)
+                db.session.commit()
+                print("added to liked!")
 
         else:
             print("wrong key pressed")
