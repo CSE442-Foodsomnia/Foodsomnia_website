@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Remove{% endblock %}
+
+{% block content%}
+
+<form action="" method="post">
+  <p>
+    {{form.csrf_token}} <br>
+    {{form.db_table.label}} {{form.db_table()}} <br>
+    {{form.remove_id.label}} {{form.remove_id()}} <br>
+    {{form.submit()}} <br>
+  </p>
+</form>
+
+
+{% endblock %}

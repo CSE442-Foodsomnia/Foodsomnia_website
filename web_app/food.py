@@ -11,7 +11,7 @@ from .models import Recipe, Liked, Disliked, User
 from flask_login import login_user, logout_user, login_required, current_user
 
 import datetime
-from .forms import RecipeForm
+from .forms import RecipeForm, RemoveForm
 
 
 
@@ -250,3 +250,30 @@ def profile():
 def my_posts():
     posts = Recipe.query.filter_by(author=current_user.username).all()
     return render_template('my_posts.html',posts=posts)
+
+
+@food.route("/remove", methods=['GET', 'POST'])
+def remove():
+    form = RemoveForm()
+
+    if form.validate_on_submit():
+        if form.db_table.data == 'liked':
+            remove_list = Liked.query.filter_by(user_id=current_user.id).filter_by(recipe_id=form.remove_id.data).all()
+            if len(remove_list) == 0:
+                flash(f"Recipe id {form.remove_id.data} is not in Liked", 'fail')
+            else:
+                flash(f"Removed recipe id {form.remove_id.data} from Liked", 'success')
+            for liked in remove_list:
+                db.session.delete(liked)
+        else:
+            remove_list = Disliked.query.filter_by(user_id=current_user.id).filter_by(recipe_id=form.remove_id.data).all()
+            if len(remove_list) == 0:
+                flash(f"Recipe id {form.remove_id.data} is not in Disliked", 'fail')
+            else:
+                flash(f"Removed recipe id {form.remove_id.data} from Disliked", 'success')
+            for disliked in remove_list:
+                db.session.delete(disliked)
+
+        db.session.commit()
+
+    return render_template('remove.html', form=form)
