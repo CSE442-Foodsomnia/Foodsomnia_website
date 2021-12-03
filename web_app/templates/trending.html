@@ -4,6 +4,8 @@
 
 {% block content%}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+
 <div class ="container-fluid mt-15" >
 	
 	{% for recipe in trending_recipes %}
