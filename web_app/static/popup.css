@@ -56,13 +56,17 @@ body {
  /* background-color: #C17C74; */
 }
  .card-title {
- text-align: center;
- font-family: Tahoma, sans-serif;
- font-size: 20px;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: Tahoma, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
 }
  .card-img-top{
- grid-area: image;
- align-items: center;
- margin-top: 2%;
- margin-left: 1%;
+    grid-area: image;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 1%;
 }

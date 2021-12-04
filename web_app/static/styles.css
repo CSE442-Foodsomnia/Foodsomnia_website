@@ -166,7 +166,7 @@
  }
   
  /*form button*/
- form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover, form.swipe-form input[type='submit'] {
+ form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover, form.swipe-form input[type='submit']:hover {
   background-color: #BCAC9B;
   cursor: pointer;
   opacity: 0.85;
