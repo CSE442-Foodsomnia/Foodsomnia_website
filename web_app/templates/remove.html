@@ -3,7 +3,9 @@
 
 {% block content%}
 
-<form action="" method="post">
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+
+<form class="remove-form" action="" method="post">
   <p>
     {{form.csrf_token}} <br>
     {{form.db_table.label}} {{form.db_table()}} <br>

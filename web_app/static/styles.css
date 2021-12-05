@@ -20,6 +20,21 @@
   src: url(https://fonts.gstatic.com/s/robotoslab/v16/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjo0oSmYmRlV9Su1caiTVo.woff) format('woff');
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
  }
+
+ @font-face {
+  font-family: 'Great Vibes';
+  src: url('https://fontlibrary.org/assets/fonts/great-vibes/dedc6a9ef116ed0320d6015e3ffab62f/53e7427de4aaa693950c7a9c35de80e2/GreatVibesRegular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+        src: url('https://fontlibrary.org/assets/fonts/poppins/fed70e8826194d3ab847c777f43c10ea/731a28a413d642522667a2de8681ff35/PoppinsRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
   
  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
   
@@ -151,7 +166,7 @@
  }
   
  /*form button*/
- form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover, form.swipe-form input[type='submit'] {
+ form.login-form input[type='submit']:hover, form.reg-form input[type='submit']:hover, form.swipe-form input[type='submit']:hover {
   background-color: #BCAC9B;
   cursor: pointer;
   opacity: 0.85;
@@ -191,7 +206,7 @@
   
  .nav{
   width: 100%;
-  line-height: 36px;
+  line-height: 25px;
   font-size: 14px;
   min-width: 600px;
   display: inline-block;
@@ -201,7 +216,7 @@
   margin: auto;
   background: #BCAC9B !important;
   text-transform: capitalize;
-  padding-bottom: 4px;
+  padding-bottom: 0px;
   border: none !important;
  }
   
@@ -233,7 +248,7 @@
  height: 2px;
  width: 0%;
  left: 0;
- bottom: 5px;
+ bottom: 0px;
  transition: 0.5s;
  }
   
@@ -361,43 +376,80 @@
  }
   
  /*Home Page*/
- h1 {
- display: block;
- font-size: 13px !important;
- position: absolute;
- width: 50%;
- padding: 0.50em;
- margin-right: 0em;
- bottom: 0px;
- font-weight: normal;
- font-family: 'tahoma';
- color: rgba(0,0,0, .6);
- }
+ h2 { /*credits*/
+  display: block;
+  font-size: 5px !important;
+  position: absolute;
+  width: 50%;
+  padding: 0.50em;
+  margin-right: 0em;
+  bottom: -5px;
+  font-weight: normal;
+  font-family: 'tahoma';
+  color: rgba(0,0,0, .6);
+  }
   
- #heartsdesire{
- display: block;
- font-size: 60px !important;
+.wrapper {
+  /* position:absolute; */
+  display: inline-flex;
+  align-items: center;
+  padding-left: 3vmax;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.wrapper .static-txt {
+  color: #fff;
+  font-size: 60px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.wrapper .dynamic-txts {
+  margin-left: 0px;
+  margin-top: 15px;
+  height: 90px;
+  line-height: 90px;
+  overflow: hidden;
+}
+
+.dynamic-txts li {
+  color: #C17C74;
+  list-style: none;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.dynamic-txts li span{
+  position: relative;
+}
+
+.dynamic-txts li span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #D9C5B2;
+  border-left: 2px solid #C17C74;
+  animation: typing 3s steps(100) normal forwards;
+  /* animation-duration: 2s; */
+}
+
+@keyframes typing {
+  100%{
+    left: 100%;
+    margin: 0 -35px 0 35px;
+  }
+}
+
+
+/*image*/
+.foodImg {
  position: absolute;
- width: 450px;
- padding: 2.1em;
- margin-left: 110px;
- font-weight: normal;
- top: 0px;
- font-family: initial;
- color: rgba(255,255,255, .9);
- text-shadow: 1px 3px 1px rgba(0,0,0, .2);
- }
-  
- h3 {
- display: block;
- font-size: 80px !important;
- position: absolute;
- width: 450px;
- padding: 3.3em;
- margin-left: -40px;
- font-weight: normal;
- margin-top: 65px;
- font-family: 'Dancing Script', Cursive;
- color: rgba(255,255,255, 1);
- text-shadow: 1px 3px 2px rgba(0,0,0, .3)
- }
+ align-content: center;
+ max-width: 50%;
+ height: 400px;
+ left: 45%;
+ top: 10%;
+}
