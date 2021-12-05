@@ -1,0 +1,90 @@
+/*fonts*/
+@font-face {
+    font-family: 'FPLNeuRegular';
+        src: url('https://fontlibrary.org/assets/fonts/fpl-neu/3922a0944c484ac769a9904d0606e0d5/2dd4101d01c96a5531ee1639ea36f1b0/FPLNeuRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+@font-face {
+    font-family: 'ArimaKoshiBold';
+        src: url('https://fontlibrary.org/assets/fonts/arima-koshi/1f2de2820fffc54c09a6a7497897a432/4872ed166c59020080b9d283eba67566/ArimaKoshiBold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    }
+
+   @font-face {
+    font-family: 'HKGroteskRegular';
+        src: url('https://fontlibrary.org/assets/fonts/hk-grotesk/62f3d95c965d7017e0d86df685d2596d/e26fc4caf25322e71cd223f54e3256df/HKGroteskRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    }
+    @font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/robotoslab/v16/BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjo0oSmYmRlV9Su1caiTVo.woff) format('woff');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+   }
+  
+   @font-face {
+    font-family: 'Great Vibes';
+    src: url('https://fontlibrary.org/assets/fonts/great-vibes/dedc6a9ef116ed0320d6015e3ffab62f/53e7427de4aaa693950c7a9c35de80e2/GreatVibesRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    }
+  
+    @font-face {
+      font-family: 'Poppins';
+          src: url('https://fontlibrary.org/assets/fonts/poppins/fed70e8826194d3ab847c777f43c10ea/731a28a413d642522667a2de8681ff35/PoppinsRegular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+        }
+  
+    
+   @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+  
+   
+   .row{
+       background-color: #ededf2;
+       border-radius: 5px;
+       height: 300px;
+       box-shadow: 0px 5px 5px rgba(0,0,0, .3);
+   }
+
+   
+   .col-md-4{
+       position: relative;
+       margin-left: 0%;
+       top: 6%;
+   }
+   /*summary*/
+   .col-md-8{
+       color: #14110F;
+       font-weight: normal;
+       font-size: 14px;
+       font-family: 'Roboto Slab';
+   }
+
+   /*title*/
+   h2{
+       position: absolute;
+       top: -1%;
+       font-size: 25px !important;
+       width: 65%;
+       padding-bottom: 0%;
+       left: 33%;
+       font-family: 'ArimaKoshiBold';
+       font-weight: bold;
+   }
+
+   p{
+       position:absolute;
+       top: 23%;
+   }
+   
+   button{
+       position: absolute;
+       margin-top: 20%;
+   }

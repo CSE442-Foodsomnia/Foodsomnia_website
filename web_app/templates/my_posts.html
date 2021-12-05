@@ -1,29 +1,23 @@
 {% extends "base.html" %}
-{% block title %}Trending{% endblock %}
+{% block title %}My Posts{% endblock %}
 
 
 {% block content%}
-
-<link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
-
 <div class ="container-fluid mt-15" >
-	
-	{% for recipe in trending_recipes %}
-		
+	{% for recipe in posts %}
+
 		<div class = "card mt-3" id = "liked_cards">
 			<div class="row">
 				<div class ="col-md-4">
-					<img src= {{recipe.image}} class="image-fluid" width="400" height="250">
+					<img src={{recipe.image}} class="img-fluid" width="400" height="250">
 				</div>
 				<div class = "col-md-8">
-					<h2 card = "card-title mt-3">
-					{{ loop.index }}.{{recipe.title}} </h2>
+					<h2 card = "card-title mt-3"> {{recipe.title}} </h2>
 					<p>{{recipe.summary}}</p>
 					<button onclick="window.open('{{recipe.source_url}}');" class = "btn btn-success"> Read More!  </button>
 				</div>
 			</div>
 		</div>
-		
 	{% endfor %}
 </div>
 

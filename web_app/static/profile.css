@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Genome';
+        src: url('fontlibrary.org/assets/fonts/genome/4bf8165113bfb991e5728ea0b697dfaf/a1fb354951e5732ff9c373c5b7bd5e94/GenomeThin.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+    @font-face {
+    font-family: 'BellotaBold';
+        src: url('https://fontlibrary.org/assets/fonts/bellota/ced5cc921982bf411ce782096879191c/d244c93d995874604da16062fbaf5cf6/BellotaBold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+        }
+    
+
+    @font-face {
+        font-family: 'HiLoDecoDeco';
+            src: url('https://fontlibrary.org/assets/fonts/hilo-deco/7df680330739e48ce90abf7a243a09bc/fc0e5c1fa84046d4377fa3c01e48b111/HiLoDecoDeco.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+          }
+
+html, body {
+    font-family: 'Genome';
+    justify-content: center;
+    align-items: center;
+}
+
+@font-face {
+    font-family: 'Great Vibes';
+    src: url('https://fontlibrary.org/assets/fonts/great-vibes/dedc6a9ef116ed0320d6015e3ffab62f/53e7427de4aaa693950c7a9c35de80e2/GreatVibesRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+.profile-card {
+    position: absolute;
+    height: 520px;
+    width: 400px;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px 30px;
+    background: no-repeat center center #7E7F83;  
+    background-size: cover;
+    border-radius: 15px;
+    box-shadow: 1px 1px 6px rgba(0,0,0, .4);
+    /*scrollbar*/
+    overflow-y: scroll;
+    scrollbar-color: rgba(181, 174, 178, 0.8), #7E7F83;
+    scrollbar-width: thin;
+   }
+
+.user{
+    position: absolute;
+    font-family: 'BellotaBold';
+    font-size: 40px;
+    top: 0px;
+    align-items: center;
+    width: 85%;
+    justify-items: center;
+    color: rgba(255, 255, 255, .8);
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom:1px solid #CCC;
+    padding-bottom:3px;
+    border-width: 100%;
+    padding-top: 5%;
+}
+
+
+h4 {
+    position: absolute;
+    font-style: normal;
+    width: 85%;
+    text-align: center;
+    font-family: 'HiLoDecoDeco';
+    text-shadow: rgba(0,0,0, .4);
+    color: rgba(255, 255, 255, .6);
+    top: 20%;
+    font-size: 30px;
+}
+
+h5{
+    background-color: #74767a;
+    position: relative;
+    font-family: 'HiLoDecoDeco';
+    color: rgba(255, 255, 255, .6);
+    align-items: center;
+    padding-bottom: 5px;
+    text-align: center;
+    padding-top: 5px;
+    top: 30%;
+    border-radius: 5%;
+    font-size: 20px;
+}
+
+
+/*remove.html css*/
+form.remove-form{
+    position: absolute;
+    height: 520px;
+    width: 400px;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px 30px;
+    background: no-repeat center center #7E7F83;  
+    background-size: cover;
+    border-radius: 15px;
+    box-shadow: 1px 1px 6px rgba(0,0,0, .4);
+    /*scrollbar*/
+    overflow-y: scroll;
+    scrollbar-color: rgba(181, 174, 178, 0.8), #7E7F83;
+    scrollbar-width: thin;
+}
+
+form.remove-form:before{
+    content: 'Remove Recipe';
+    font-size: 45px;
+    /* position: absolute; */
+    margin-left: calc(50% - 150px);
+    color: #EDEDE8;
+    font-weight: normal;
+    font-family: 'Roboto Slab';
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 5px rgba(0,0,0, .3);
+    border-bottom: 0.2px solid #8D8D92;
+    padding-bottom: 5px;
+}
+
+form.remove-form p{
+    margin: 0;
+    padding: 0;
+}
+
+form.remove-form input{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+ /*remove text*/
+ form.remove-form input[type="text"], input[type="password"], form.remove-form input[type="remove_id"]{
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-bottom: 1px solid #D4CDC3;
+    display: inline-block;
+    height: 40px;
+    background: transparent !important;
+    outline: none !important;
+    margin-top: 10px;
+    transition: all 0.5s ease-in-out;
+    color: black;
+    font-size: 15px;
+   }
+   form.remove-form input[type="text"]:focus,input[type="password"]:focus{
+    opacity: .4;
+   }
+   form.remove-form input[type='submit']:focus{
+    outline: none !important;
+   }
+    
+    
+   /*submit button*/
+   form.remove-form input[type='submit'] {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #BCAC9B;
+    color: white;
+    width: 100%;
+    text-align: center;
+    outline: none;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 2px;
+    margin-top: 35px;
+    transition: all 0.5s ease-in-out;
+    border: none !important;
+    text-transform: capitalize;
+    box-shadow: 0.1px 0.3px 6px 2px rgba(0,0,0, .1);
+   }
+    
+   /*form button*/
+   form.remove-form input[type='submit']:hover{
+    background-color: #BCAC9B;
+    cursor: pointer;
+    opacity: 0.85;
+   }
+
+   form.remove-form label {
+    color: white;
+    display: block;
+    text-shadow: 1px 1px 5px rgba(0,0,0, .2);
+   }
+
+#db_table li{
+    list-style-type: none;
+    top: 5%;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+
+input[type="radio"] {
+    display: inline-block;
+    position: absolute;
+    bottom: -10px;
+    left: 140px;
+  }

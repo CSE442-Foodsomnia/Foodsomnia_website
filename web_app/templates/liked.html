@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Liked{% endblock %}
 
-
 {% block content%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+
 <div class ="container-fluid mt-15" >
 	{% for recipe in liked %}
-	
+
 		<div class = "card mt-3" id = "liked_cards">
 			<div class="row">
 				<div class ="col-md-4">
@@ -24,45 +26,3 @@
 
 
 {% endblock %}
-<script type=text/javascript>
-console.log({{displayedid}})
-    window.addEventListener('keydown', (event) => {
-        switch (event.keyCode) {
-          case 37:
-            // left arrow
-            console.log("left arrow");
-            $.ajax({
-              type: "POST",
-              url: "{{url_for('food.food_recommendation')}}",
-              data: `{"key_pressed":"left"}`,
-              contentType: 'application/json;charset=UTF-8'
-            });
-            window.location.reload();
-            break;
-
-          case 39:
-            // right arrow
-            console.log("right arrow");
-            $.ajax({
-              type: "POST",
-              url: "{{url_for('food.food_recommendation')}}",
-              data: `{"key_pressed":"right", "displayedrecipe":{{displayedid}} }`,
-              contentType: 'application/json;charset=UTF-8'
-            });
-            window.location.reload();
-            break;
-        }
-    });
-
-        function openModal(){
-            document.getElementById("myModal").style.display = "block"
-        }
-        function closeModal(){
-            document.getElementById("myModal").style.display = "none"
-        }
-        window.onclick = function(event) {
-          if (event.target == document.getElementById("myModal")) {
-            document.getElementById("myModal").style.display = "none";
-            }
-        }
-</script>
