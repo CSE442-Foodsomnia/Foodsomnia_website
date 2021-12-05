@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Liked{% endblock %}
 
-
 {% block content%}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='recipe.css') }}">
+
 <div class ="container-fluid mt-15" >
 	{% for recipe in liked %}
 
