@@ -50,10 +50,10 @@ def init_app():
     scheduler.init_app(app)
     """Uncomment if you want to run the scheduler!
       So far its annoying to have everybody get emails to we comment this out """
-    #app.apscheduler.add_job(func=lambda: send_email(app), trigger = 'interval', seconds = 10, id = 'EM1')
+    app.apscheduler.add_job(func=lambda: send_email(app), trigger = 'interval', seconds = 87535, id = 'EM1')
     #send_email(app)
     #app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=10, id="DB1")
-    #scheduler.start()
+    scheduler.start()
 
     return app
 
