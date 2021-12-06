@@ -86,13 +86,14 @@
             <li><a class="dropdown-item" href="{{ url_for('food.post_recipe') }}">Post a Recipe</a></li>
             <li><a class="dropdown-item" href="{{ url_for('food.my_posts') }}">My Posts</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="url_for('auth.logout') }}">Logout</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
 
 
           </ul>
         </li>
 
     {% else %}
+
 
       <!-- User is not logged in -->
 
