@@ -14,7 +14,7 @@
   <img class="card-img-top" onclick="openModal()" src="{{recipe.image}}" class="card-img-top" alt="Card image cap">
       <div class="quotes">
     </div>
-  <button onclick="window.open('{{recipe.source_url}}');" class = "btn btn-success"> Read More!  </button>
+  <button onclick="window.open('{{recipe.source_url}}');" class = "btn btn-success" style="font-size: 10px"> Read More!  </button>
   <div class="card-body">
     <h5 href="{{recipe.source_url}}" class="card-title">{{recipe.title}}</h5>
     <p class="card-text">{{recipe.description}}</p>
@@ -40,7 +40,7 @@
 
 </div>
 
-<div> Click Right Arrow to Like Recipe. Click Left Arrow to Disliek Recipe. </div>
+<div> Click Right Arrow to Like Recipe. Click Left Arrow to Dislike Recipe. </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
