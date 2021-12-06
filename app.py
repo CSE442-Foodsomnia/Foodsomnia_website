@@ -8,4 +8,4 @@ if __name__ == "__main__":
 
     print(port)
     app = init_app()
-    app.run(debug=True, port=port)
+    app.run(debug=True, host='0.0.0.0', port=port)
