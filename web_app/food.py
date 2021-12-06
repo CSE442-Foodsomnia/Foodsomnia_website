@@ -3,6 +3,7 @@ from flask import jsonify
 from random import randrange
 import json
 import copy
+import math
 
 import sys
 import pandas as pd
@@ -21,12 +22,8 @@ random_recipe_id = -1
 
 def nonAllergyLoop(recipedict, allergic_array):
     for key in recipedict:
-        print("DFDFDF")
-        print(key)
-        print(type(key))
         if(type(key) == list):
             return True
-        print(key["name"])
         for i in allergic_array:
             if i in key["name"]:
                 return True
@@ -90,7 +87,6 @@ def food_recommendation():
         allergic_array.append("cracker")
         allergic_array.append("crouton")
 
-    print(allergic_array)
     recipe_list = Recipe.query.all()
 
     new_list = copy.deepcopy(recipe_list)
@@ -98,8 +94,6 @@ def food_recommendation():
     random_recipe = new_list[i]
 
     random_recipe.ingredients ="["+random_recipe.ingredients + "]"
-    print(random_recipe.ingredients)
-    print("WWWWWWW")
     recipedict = json.loads(random_recipe.ingredients)
     redo = True
     while(redo == True):
@@ -116,11 +110,8 @@ def food_recommendation():
 
 
     if request.method == 'POST':
-        print("post!")
         key_pressed = request.get_json()["key_pressed"]
         displayed_recipe_id = request.get_json()["displayedrecipe"]
-        print(f"keypressed: {key_pressed}")
-        print(f"displayedrecipe: {displayed_recipe_id}")
         user_id = current_user.id
         recipe_id = request.get_json()["displayedrecipe"]
 
@@ -162,7 +153,21 @@ def food_recommendation():
     #     random_recipe_ingredients = random_recipe_ingredients + i[0]["name"]
     #print(random_recipe.ingredients[0])
 
-    return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id, ingredients = random_recipe_ingredients)
+    print(random_recipe.id)
+    liked = [r.user_id for r in Liked.query.filter_by(recipe_id=random_recipe.id).all()]
+    disliked = [r.user_id for r in Disliked.query.filter_by(recipe_id=random_recipe.id).all()]
+    print("AWAWAWA")
+    print(liked)
+    print(disliked)
+    rating = 1
+    if(len(liked)>0 and len(disliked) == 0):
+        rating = 5
+    else:
+        percent = len(liked)/(len(liked)+len(disliked))
+        print("percent ="+str(percent))
+        num = percent/.20
+        rating = math.ceil(num)
+    return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id, ingredients = random_recipe_ingredients, rating = rating)
 
 
 
