@@ -89,12 +89,9 @@ button{
     margin-top: 100%;
     margin-left: 25%;
 }
-
-.struct{
-    position: relative;
-    font-family: 'Poppins';
-    font-size: 10px;
-    margin-top: -360px;
-    left: 37%;
->>>>>>> Sprint-4-profile-page-css
+#instructions{
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
 }
