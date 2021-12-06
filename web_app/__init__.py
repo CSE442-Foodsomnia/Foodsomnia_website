@@ -45,11 +45,15 @@ def init_app():
 
 
     from flask_apscheduler import APScheduler
-    from .api_scheduler import store_recipes
+    from .api_scheduler import store_recipes,send_email
     scheduler = APScheduler()
     scheduler.init_app(app)
-    app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=10, id="DB1")
-    # scheduler.start()
+    """Uncomment if you want to run the scheduler!
+      So far its annoying to have everybody get emails to we comment this out """
+    #app.apscheduler.add_job(func=lambda: send_email(app), trigger = 'interval', seconds = 10, id = 'EM1')
+    #send_email(app)
+    #app.apscheduler.add_job(func=lambda: store_recipes(app), trigger='interval', seconds=10, id="DB1")
+    #scheduler.start()
 
     return app
 

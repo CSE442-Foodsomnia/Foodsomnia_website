@@ -56,13 +56,35 @@ body {
  /* background-color: #C17C74; */
 }
  .card-title {
- text-align: center;
- font-family: Tahoma, sans-serif;
- font-size: 20px;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: Tahoma, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-left: 10px;
 }
  .card-img-top{
- grid-area: image;
- align-items: center;
- margin-top: 2%;
- margin-left: 1%;
+    grid-area: image;
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+button{
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-size: 10px;
+    margin-top: 100%;
+    margin-left: 25%;
+}
+#instructions{
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
 }
