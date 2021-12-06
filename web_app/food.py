@@ -3,6 +3,7 @@ from flask import jsonify
 from random import randrange
 import json
 import copy
+import math
 
 import sys
 import pandas as pd
@@ -11,7 +12,7 @@ from .models import Recipe, Liked, Disliked, User
 from flask_login import login_user, logout_user, login_required, current_user
 
 import datetime
-from .forms import RecipeForm
+from .forms import RecipeForm, RemoveForm
 
 
 
@@ -21,12 +22,8 @@ random_recipe_id = -1
 
 def nonAllergyLoop(recipedict, allergic_array):
     for key in recipedict:
-        print("DFDFDF")
-        print(key)
-        print(type(key))
         if(type(key) == list):
             return True
-        print(key["name"])
         for i in allergic_array:
             if i in key["name"]:
                 return True
@@ -90,7 +87,6 @@ def food_recommendation():
         allergic_array.append("cracker")
         allergic_array.append("crouton")
 
-    print(allergic_array)
     recipe_list = Recipe.query.all()
 
     new_list = copy.deepcopy(recipe_list)
@@ -98,8 +94,6 @@ def food_recommendation():
     random_recipe = new_list[i]
 
     random_recipe.ingredients ="["+random_recipe.ingredients + "]"
-    print(random_recipe.ingredients)
-    print("WWWWWWW")
     recipedict = json.loads(random_recipe.ingredients)
     redo = True
     while(redo == True):
@@ -116,26 +110,37 @@ def food_recommendation():
 
 
     if request.method == 'POST':
-        print("post!")
         key_pressed = request.get_json()["key_pressed"]
         displayed_recipe_id = request.get_json()["displayedrecipe"]
-        print(f"keypressed: {key_pressed}")
-        print(f"displayedrecipe: {displayed_recipe_id}")
         user_id = current_user.id
         recipe_id = request.get_json()["displayedrecipe"]
 
         if key_pressed == 'left':
-            new_dislike = Disliked(user_id, displayed_recipe_id)
-            db.session.add(new_dislike)
-            db.session.commit()
-            print("added to dislike!")
+            duplicate_flag = False
+            current_user_dislikes = Disliked.query.filter_by(user_id=current_user.id).all()
+            for r in current_user_dislikes:
+                if r.recipe_id == recipe_id:
+                    duplicate_flag = True
+
+            if not duplicate_flag:
+                new_dislike = Disliked(user_id, displayed_recipe_id)
+                db.session.add(new_dislike)
+                db.session.commit()
+                print("added to dislike!")
 
 
         elif key_pressed == 'right':
-            new_like = Liked(user_id, displayed_recipe_id)
-            db.session.add(new_like)
-            db.session.commit()
-            print("added to liked!")
+            duplicate_flag = False
+            current_user_likes = Liked.query.filter_by(user_id=current_user.id).all()
+            for r in current_user_likes:
+                if r.recipe_id == recipe_id:
+                    duplicate_flag = True
+
+            if not duplicate_flag:
+                new_like = Liked(user_id, displayed_recipe_id)
+                db.session.add(new_like)
+                db.session.commit()
+                print("added to liked!")
 
         else:
             print("wrong key pressed")
@@ -148,7 +153,21 @@ def food_recommendation():
     #     random_recipe_ingredients = random_recipe_ingredients + i[0]["name"]
     #print(random_recipe.ingredients[0])
 
-    return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id, ingredients = random_recipe_ingredients)
+    print(random_recipe.id)
+    liked = [r.user_id for r in Liked.query.filter_by(recipe_id=random_recipe.id).all()]
+    disliked = [r.user_id for r in Disliked.query.filter_by(recipe_id=random_recipe.id).all()]
+    print("AWAWAWA")
+    print(liked)
+    print(disliked)
+    rating = 1
+    if(len(liked)>0 and len(disliked) == 0):
+        rating = 5
+    else:
+        percent = len(liked)/(len(liked)+len(disliked))
+        print("percent ="+str(percent))
+        num = percent/.20
+        rating = math.ceil(num)
+    return render_template('swipe.html', recipe=random_recipe, displayed_id=random_recipe.id, ingredients = random_recipe_ingredients, rating = rating)
 
 
 
@@ -219,7 +238,6 @@ def post_recipe():
     return render_template("post_recipe.html", form=form)
 
 
-    return render_template('disliked.html', disliked=disliked_recipes)
 @food.route("/profile")
 def profile():
     value = User.query.filter_by(id=current_user.id).all()
@@ -231,3 +249,36 @@ def profile():
     soybeanallerg=value[0].soybeans_allerg
     wheatallerg = value[0].wheat_allerg
     return render_template('profile.html',name=current_user.username, ea=eggallerg, fa=fishallerg, ma=milkallerg, pa=peanutallerg, sfa = shellfishallerg, sba = soybeanallerg, wa = wheatallerg)
+
+
+@food.route("/my-posts", methods=['GET', 'POST'])
+def my_posts():
+    posts = Recipe.query.filter_by(author=current_user.username).all()
+    return render_template('my_posts.html',posts=posts)
+
+
+@food.route("/remove", methods=['GET', 'POST'])
+def remove():
+    form = RemoveForm()
+
+    if form.validate_on_submit():
+        if form.db_table.data == 'liked':
+            remove_list = Liked.query.filter_by(user_id=current_user.id).filter_by(recipe_id=form.remove_id.data).all()
+            if len(remove_list) == 0:
+                flash(f"Recipe id {form.remove_id.data} is not in Liked", 'fail')
+            else:
+                flash(f"Removed recipe id {form.remove_id.data} from Liked", 'success')
+            for liked in remove_list:
+                db.session.delete(liked)
+        else:
+            remove_list = Disliked.query.filter_by(user_id=current_user.id).filter_by(recipe_id=form.remove_id.data).all()
+            if len(remove_list) == 0:
+                flash(f"Recipe id {form.remove_id.data} is not in Disliked", 'fail')
+            else:
+                flash(f"Removed recipe id {form.remove_id.data} from Disliked", 'success')
+            for disliked in remove_list:
+                db.session.delete(disliked)
+
+        db.session.commit()
+
+    return render_template('remove.html', form=form)

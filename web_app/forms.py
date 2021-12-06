@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SelectField, BooleanField, SubmitField, TextField, validators
+from wtforms import StringField, RadioField, IntegerField, PasswordField, SelectField, BooleanField, SubmitField, TextField, validators
 from wtforms.fields.html5 import EmailField
 
 
@@ -35,7 +35,6 @@ class LoginForm(FlaskForm):
 
 
 class RecipeForm(FlaskForm):
-
      # id = None
      title = TextField('Title', [validators.DataRequired()])
      # pic = None
@@ -46,3 +45,9 @@ class RecipeForm(FlaskForm):
      summary = TextField('Summary', [validators.DataRequired()])
      source_url = TextField('Source URL', [validators.DataRequired()])
      submit = SubmitField('Submit!')
+
+
+class RemoveForm(FlaskForm):
+    db_table = RadioField('Remove from:', choices=[('liked', 'Liked'), ('disliked', 'Disliked')])
+    remove_id = IntegerField('Recipe ID to remove:', [validators.DataRequired()])
+    submit = SubmitField('Submit!')
