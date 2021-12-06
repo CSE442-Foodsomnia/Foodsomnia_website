@@ -82,3 +82,9 @@ button{
     margin-top: 100%;
     margin-left: 25%;
 }
+#instructions{
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+}
